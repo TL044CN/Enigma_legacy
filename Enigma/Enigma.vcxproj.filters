@@ -27,9 +27,15 @@
     <ClInclude Include="src\Enigma\EntryPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Log.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

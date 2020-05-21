@@ -3,8 +3,7 @@
 
 namespace Enigma {
 
-	class ENIGMA_API Application
-	{
+	class ENIGMA_API Application {
 	public:
 		Application();
 		virtual ~Application();

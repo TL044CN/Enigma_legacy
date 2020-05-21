@@ -57,6 +57,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);ENGM_BUILD_DLL;ENGM_PLATFORM_WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Enigma\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -71,6 +72,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_WINDLL;%(PreprocessorDefinitions);ENGM_BUILD_DLL;ENGM_PLATFORM_WINDOWS</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)Enigma\vendor\spdlog\include;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,12 +81,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Enigma\Log.h" />
     <ClInclude Include="src\Enigma\Application.h" />
     <ClInclude Include="src\Enigma\Core.h" />
     <ClInclude Include="src\Enigma.h" />
     <ClInclude Include="src\Enigma\EntryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enigma\Log.cpp" />
     <ClCompile Include="src\Enigma\Application.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

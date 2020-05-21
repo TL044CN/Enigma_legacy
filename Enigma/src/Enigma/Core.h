@@ -1,5 +1,7 @@
 #pragma once
 
+#define ENGM_DEBUG
+
 #ifdef ENGM_PLATFORM_WINDOWS
 
 	#ifdef ENGM_BUILD_DLL

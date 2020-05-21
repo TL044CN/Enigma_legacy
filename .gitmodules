@@ -1,0 +1,3 @@
+[submodule "Enigma/vendor/spdlog"]
+	path = Enigma/vendor/spdlog
+	url = https://github.com/gabime/spdlog
