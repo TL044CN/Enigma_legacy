@@ -23,7 +23,7 @@ namespace Enigma {
 
 }
 
-#ifdef ENGM_DEBUG
+#ifdef ENGM_DEBUG or ENGM_RELEASE
 
 //Core logging macros
 //	#define ENGM_CORE_FATAL(...)     ::Enigma::Log::GetCoreLogger()->fatal(__VA_ARGS__)
