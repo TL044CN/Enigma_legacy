@@ -4,6 +4,9 @@
     <Filter Include="Enigma">
       <UniqueIdentifier>{F6D7D4B0-E279-FF86-CB34-13DBB77586D7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Enigma\Events">
+      <UniqueIdentifier>{1A33D516-86F3-504D-4F2E-9ACABBAD9529}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Enigma.h" />
@@ -15,6 +18,18 @@
     </ClInclude>
     <ClInclude Include="src\Enigma\EntryPoint.h">
       <Filter>Enigma</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Events\ApplicationEvent.h">
+      <Filter>Enigma\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Events\Event.h">
+      <Filter>Enigma\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Events\KeyEvent.h">
+      <Filter>Enigma\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Events\MouseEvent.h">
+      <Filter>Enigma\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Log.h">
       <Filter>Enigma</Filter>

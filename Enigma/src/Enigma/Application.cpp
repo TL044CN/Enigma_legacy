@@ -1,5 +1,8 @@
 #include "Application.h"
 
+#include "Enigma/Events/ApplicationEvent.h"
+#include "Enigma/Log.h"
+
 namespace Enigma {
 
 	Application::Application() {
@@ -11,6 +14,8 @@ namespace Enigma {
 	}
 
 	void Application::Run() {
+		WindowResizeEvent e(1280, 720);
+		ENGM_CORE_TRACE(e);
 		while (true);
 	}
 
