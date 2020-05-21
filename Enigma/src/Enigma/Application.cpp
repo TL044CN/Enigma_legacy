@@ -15,7 +15,7 @@ namespace Enigma {
 
 	void Application::Run() {
 		WindowResizeEvent e(1280, 720);
-		ENGM_CORE_TRACE(e);
+		ENGM_CLIENT_TRACE(e);
 		while (true);
 	}
 
