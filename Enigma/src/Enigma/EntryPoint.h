@@ -9,8 +9,8 @@ extern Enigma::Application* Enigma::CreateApplication();
 int main(int argc, char** argv) {
 
 	Enigma::Log::Init();
-	ENGM_CORE_WARN("Initialized Log");
-	ENGM_CLIENT_INFO("Initialized Log");
+	ENGM_CORE_WARN("Initialized Core Log");
+	ENGM_CLIENT_INFO("Initialized Clientside Log");
 
 	auto app = Enigma::CreateApplication();
 	app->Run();
