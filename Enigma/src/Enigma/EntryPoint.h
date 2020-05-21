@@ -2,8 +2,6 @@
 
 #ifdef ENGM_PLATFORM_WINDOWS
 
-#include <stdio.h>
-
 extern Enigma::Application* Enigma::CreateApplication();
 
 int main(int argc, char** argv) {

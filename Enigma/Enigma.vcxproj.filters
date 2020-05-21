@@ -34,6 +34,7 @@
     <ClInclude Include="src\Enigma\Log.h">
       <Filter>Enigma</Filter>
     </ClInclude>
+    <ClInclude Include="src\engmpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -42,5 +43,6 @@
     <ClCompile Include="src\Enigma\Log.cpp">
       <Filter>Enigma</Filter>
     </ClCompile>
+    <ClCompile Include="src\engmpch.cpp" />
   </ItemGroup>
 </Project>

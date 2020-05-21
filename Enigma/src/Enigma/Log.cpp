@@ -1,3 +1,4 @@
+#include "engmpch.h"
 #include "Log.h"
 
 namespace Enigma {

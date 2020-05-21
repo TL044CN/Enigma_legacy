@@ -2,9 +2,6 @@
 
 #include "Event.h"
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
-#include <sstream>
-#endif
 
 namespace Enigma {
 
@@ -16,13 +13,11 @@ namespace Enigma {
 		unsigned int GetWidth() const { return m_Width; }
 		unsigned int GetHeight() const { return m_Height; }
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "Window Resize Event: " << m_Width << ", " << m_Height;
 			return ss.str();
 		}
-#endif
 
 		EVENT_CLASS_TYPE(WindowResize)
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)

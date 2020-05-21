@@ -1,8 +1,6 @@
 #pragma once
 
 #include "Enigma/Core.h"
-#include <string>
-#include <functional>
 
 namespace Enigma {
 
