@@ -52,14 +52,17 @@ project "Enigma"
 
 	filter "configurations:Debug"
 		defines "ENGM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENGM_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ENGM_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 
@@ -96,13 +99,16 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "ENGM_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "ENGM_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "ENGM_DIST"
+		buildoptions "/MD"
 		optimize "On"
-	
+

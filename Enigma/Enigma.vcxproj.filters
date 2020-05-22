@@ -37,6 +37,12 @@
     <ClInclude Include="src\Enigma\Events\MouseEvent.h">
       <Filter>Enigma\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Layer.h">
+      <Filter>Enigma</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Layerstack.h">
+      <Filter>Enigma</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Log.h">
       <Filter>Enigma</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
+      <Filter>Enigma</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Layer.cpp">
+      <Filter>Enigma</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Layerstack.cpp">
       <Filter>Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Log.cpp">
