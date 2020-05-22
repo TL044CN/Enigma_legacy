@@ -22,7 +22,7 @@ namespace Enigma {
 
 }
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 
 //assertion macros
 #ifdef ENGM_ENABLE_ASSERT

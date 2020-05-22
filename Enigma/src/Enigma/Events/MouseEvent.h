@@ -1,7 +1,7 @@
 #pragma once
 #include "Event.h"
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 #include <sstream>
 #endif
 
@@ -14,7 +14,7 @@ namespace Enigma {
 		float GetX() const { return m_MouseX; }
 		float GetY() const { return m_MouseY; }
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseMovedEvent: " << m_MouseX << ", " << m_MouseY;
@@ -33,7 +33,7 @@ namespace Enigma {
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "MouseScrolledEvent: " << m_XOffset << ", " << m_YOffset;
@@ -63,7 +63,7 @@ namespace Enigma {
 	public:
 		MouseButtonPressedEvent(int button) : MouseButtonEvent(button) {}
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 			std::string ToString() const override {
 				std::stringstream ss;
 				ss << "MouseButtonPressedEvent: " << m_Button;
@@ -77,7 +77,7 @@ namespace Enigma {
 	public:
 		MouseButtonReleasedEvent(int button) : MouseButtonEvent(button) {}
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 			std::string ToString() const override {
 				std::stringstream ss;
 				ss << "MouseButtonReleasedEvent: " << m_Button;

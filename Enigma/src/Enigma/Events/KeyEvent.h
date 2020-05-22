@@ -1,7 +1,7 @@
 #pragma once
 #include "Event.h"
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 #include <sstream>
 #endif
 
@@ -23,7 +23,7 @@ namespace Enigma {
 		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 		int GetRepearCount() const { return m_RepeatCount; };
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "KeyPressedEvent: " << m_KeyCode << " (" << m_RepeatCount << " repeats)";
@@ -40,7 +40,7 @@ namespace Enigma {
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "KeyReleasedEvent: " << m_KeyCode;
@@ -55,7 +55,7 @@ namespace Enigma {
 	public:
 		KeyTypedEvent(int keycode) :KeyEvent(keycode) {}
 
-#ifdef ENGM_DEBUG or ENGM_RELEASE
+#if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;
 			ss << "KeyTypedEvent: " << m_KeyCode;
