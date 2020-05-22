@@ -8,8 +8,10 @@
 		#define ENIGMA_API __declspec(dllimport)
 	#endif
 
-#else
-	
-	#error Enigma Engine only supports Windows (for now)
+	#ifdef ENGM_DEBUG
+		#define ENGM_ENABLE_ASSERT
+	#endif
 
+#else
+	#error Enigma Engine only supports Windows (for now)
 #endif

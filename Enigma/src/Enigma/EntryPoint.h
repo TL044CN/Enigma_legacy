@@ -8,7 +8,7 @@ int main(int argc, char** argv) {
 
 	Enigma::Log::Init();
 	ENGM_CORE_WARN("Initialized Core Log");
-	ENGM_CLIENT_INFO("Initialized Clientside Log");
+	ENGM_INFO("Initialized Clientside Log");
 
 	auto app = Enigma::CreateApplication();
 	app->Run();

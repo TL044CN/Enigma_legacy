@@ -159,6 +159,8 @@
     <ClInclude Include="src\Enigma\Events\MouseEvent.h" />
     <ClInclude Include="src\Enigma\Log.h" />
     <ClInclude Include="src\engmpch.h" />
+    <ClInclude Include="src\Enigma\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp" />
@@ -166,6 +168,7 @@
     <ClCompile Include="src\engmpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

@@ -35,6 +35,8 @@
       <Filter>Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\engmpch.h" />
+    <ClInclude Include="src\Enigma\Window.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -44,5 +46,6 @@
       <Filter>Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\engmpch.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>
 </Project>

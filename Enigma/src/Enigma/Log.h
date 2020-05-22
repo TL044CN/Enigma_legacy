@@ -24,19 +24,31 @@ namespace Enigma {
 
 #ifdef ENGM_DEBUG or ENGM_RELEASE
 
+//assertion macros
+#ifdef ENGM_ENABLE_ASSERT
+	#define ENGM_CORE_ASSERT(condition,...)   if(!condition){\
+										      ::Enigma::Log::GetCoreLogger()->critical(__VA_ARGS__);\
+										      __debugbreak(); }
+	#define ENGM_ASSERT(condition,...)        if(!condition){\
+									          ::Enigma::Log::GetClientLogger()->critical(__VA_ARGS__);\
+										      __debugbreak(); }
+#else
+	#define ENGM_CORE_ASSERT(condition,...)
+	#define ENGM_ASSERT(condition,...)
+#endif
 //Core logging macros
-//	#define ENGM_CORE_FATAL(...)     ::Enigma::Log::GetCoreLogger()->fatal(__VA_ARGS__)
-	#define ENGM_CORE_ERROR(...)     ::Enigma::Log::GetCoreLogger()->error(__VA_ARGS__)
-	#define ENGM_CORE_WARN(...)      ::Enigma::Log::GetCoreLogger()->warn(__VA_ARGS__)
-	#define ENGM_CORE_INFO(...)      ::Enigma::Log::GetCoreLogger()->info(__VA_ARGS__)
-	#define ENGM_CORE_TRACE(...)     ::Enigma::Log::GetCoreLogger()->trace(__VA_ARGS__)
+//	#define ENGM_CORE_FATAL(...)              ::Enigma::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+	#define ENGM_CORE_ERROR(...)              ::Enigma::Log::GetCoreLogger()->error(__VA_ARGS__)
+	#define ENGM_CORE_WARN(...)               ::Enigma::Log::GetCoreLogger()->warn(__VA_ARGS__)
+	#define ENGM_CORE_INFO(...)               ::Enigma::Log::GetCoreLogger()->info(__VA_ARGS__)
+	#define ENGM_CORE_TRACE(...)              ::Enigma::Log::GetCoreLogger()->trace(__VA_ARGS__)
 
 //Client logging macros
-//	#define ENGM_Client_FATAL(...)   ::Enigma::Log::GetClientLogger()->fatal(__VA_ARGS__)
-	#define ENGM_CLIENT_ERROR(...)   ::Enigma::Log::GetClientLogger()->error(__VA_ARGS__)
-	#define ENGM_CLIENT_WARN(...)    ::Enigma::Log::GetClientLogger()->warn(__VA_ARGS__)
-	#define ENGM_CLIENT_INFO(...)    ::Enigma::Log::GetClientLogger()->info(__VA_ARGS__)
-	#define ENGM_CLIENT_TRACE(...)   ::Enigma::Log::GetClientLogger()->trace(__VA_ARGS__)
+//	#define ENGM_FATAL(...)                   ::Enigma::Log::GetClientLogger()->fatal(__VA_ARGS__)
+	#define ENGM_ERROR(...)	                  ::Enigma::Log::GetClientLogger()->error(__VA_ARGS__)
+	#define ENGM_WARN(...)	                  ::Enigma::Log::GetClientLogger()->warn(__VA_ARGS__)
+	#define ENGM_INFO(...)	                  ::Enigma::Log::GetClientLogger()->info(__VA_ARGS__)
+	#define ENGM_TRACE(...)	                  ::Enigma::Log::GetClientLogger()->trace(__VA_ARGS__)
 
 #else
 	//Core logging macros
@@ -47,9 +59,9 @@ namespace Enigma {
 	#define ENGM_CORE_TRACE(...)
 
 	//Client logging macros
-//	#define ENGM_Client_FATAL(...)
-	#define ENGM_CLIENT_ERROR(...)
-	#define ENGM_CLIENT_WARN(...)
-	#define ENGM_CLIENT_INFO(...)
-	#define ENGM_CLIENT_TRACE(...)
+//	#define ENGM_FATAL(...)
+	#define ENGM_ERROR(...)
+	#define ENGM_WARN(...)
+	#define ENGM_INFO(...)
+	#define ENGM_TRACE(...)
 #endif
