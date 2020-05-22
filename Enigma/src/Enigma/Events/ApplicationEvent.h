@@ -34,13 +34,30 @@ namespace Enigma {
 		EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
 
+	class ENIGMA_API WindowFocusEvent : public Event {
+	public:
+		WindowFocusEvent() = default;
+
+		EVENT_CLASS_TYPE(WindowFocus)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	};
+
+	class ENIGMA_API WindowFocusLostEvent : public Event {
+	public:
+		WindowFocusLostEvent() = default;
+
+		EVENT_CLASS_TYPE(WindowFocusLost)
+		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+	};
+
 	class ENIGMA_API AppTickEvent : public Event {
 	public:
 		AppTickEvent() = default;
 
 		EVENT_CLASS_TYPE(AppTick)
-		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+			EVENT_CLASS_CATEGORY(EventCategoryApplication)
 	};
+
 
 	class ENIGMA_API AppUpdateEvent : public Event {
 	public:

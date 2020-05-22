@@ -1,19 +1,27 @@
 #include "engmpch.h"
 #include "Application.h"
 
-#include "Enigma/Events/ApplicationEvent.h"
 #include "Enigma/Log.h"
 
 #include <GLFW/glfw3.h>
 
 namespace Enigma {
 
+#define BIND_EVENT_FUNCTION(function) std::bind(&function, this, std::placeholders::_1)
+
 	Application::Application() {
 		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window->SetEventCallback(BIND_EVENT_FUNCTION(Application::OnEvent));
 	}
 
-	Application::~Application() {
+	Application::~Application() {}
 
+	void Application::OnEvent(Event& e) {
+		EventDispatcher dispatcher(e);
+
+		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FUNCTION(Application::OnWindowClose));
+
+		ENGM_CORE_TRACE("{0}", e);
 	}
 
 	void Application::Run() {
@@ -22,6 +30,11 @@ namespace Enigma {
 			glClear(GL_COLOR_BUFFER_BIT);
 			m_Window->OnUpdate();
 		}
+	}
+
+	bool Application::OnWindowClose(WindowCloseEvent& e) {
+		m_Running = false;
+		return true;
 	}
 
 }
