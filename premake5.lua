@@ -6,8 +6,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
 IncludeDir["GLFW"] = "Enigma/vendor/GLFW/include"
+IncludeDir["Glad"] = "Enigma/vendor/Glad/include"
 
 include "Enigma/vendor/GLFW"
+include "Enigma/vendor/Glad"
 
 project "Enigma"
 	location "Enigma"
@@ -28,11 +30,13 @@ project "Enigma"
 	includedirs {
 		"%{prj.name}/src",
 		"%{prj.name}/vendor/spdlog/include",
-		"%{IncludeDir.GLFW}"		
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -43,7 +47,8 @@ project "Enigma"
 
 		defines {
 			"ENGM_BUILD_DLL",
-			"ENGM_PLATFORM_WINDOWS"
+			"ENGM_PLATFORM_WINDOWS",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands {

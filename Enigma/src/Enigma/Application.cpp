@@ -2,8 +2,7 @@
 #include "Application.h"
 
 #include "Enigma/Log.h"
-
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
 namespace Enigma {
 
