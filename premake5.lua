@@ -4,6 +4,11 @@ workspace "Enigma"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "Enigma/vendor/GLFW/include"
+
+include "Enigma/vendor/GLFW"
+
 project "Enigma"
 	location "Enigma"
 	kind "SharedLib"
@@ -22,7 +27,13 @@ project "Enigma"
 
 	includedirs {
 		"%{prj.name}/src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"		
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
