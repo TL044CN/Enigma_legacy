@@ -1,6 +1,6 @@
 [submodule "Enigma/vendor/spdlog"]
 	path = Enigma/vendor/spdlog
-	url = https://github.com/gabime/spdlog
+	url = https://github.com/TL044CN/spdlog
 [submodule ".\\Enigma\\vendor\\GLFW"]
 	path = .\\Enigma\\vendor\\GLFW
 	url = https://github.com/TL044CN/glfw
