@@ -32,7 +32,7 @@ namespace Enigma {
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
 
-		ENGM_CORE_INFO("Atteppt at creating Window {0} ({1}x{2})",m_Data.Title, m_Data.Width,m_Data.Height);
+		ENGM_CORE_INFO("Attempt at creating Window {0} ({1}x{2})",m_Data.Title, m_Data.Width,m_Data.Height);
 
 		if (!s_GLFWInitialized) {
 			int success = glfwInit();
