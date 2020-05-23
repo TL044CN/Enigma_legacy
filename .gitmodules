@@ -4,3 +4,6 @@
 [submodule "Enigma/vendor/GLFW"]
 	path = Enigma/vendor/GLFW
 	url = https://github.com/TL044CN/glfw
+[submodule ".\\Enigma\\vendor\\ImGui"]
+	path = .\\Enigma\\vendor\\ImGui
+	url = http://github.com/TL044CN/imgui

@@ -19,6 +19,7 @@ class Sandbox : public Enigma::Application {
 public:
 	Sandbox() {
 		PushLayer(new TestLayer());
+		PushOverlay(new Enigma::ImGuiLayer());
 	}
 
 	~Sandbox() {
