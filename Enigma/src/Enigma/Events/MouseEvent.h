@@ -33,6 +33,9 @@ namespace Enigma {
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset) : m_XOffset(xOffset), m_YOffset(yOffset) {}
 
+		float GetXOffset() const { return m_XOffset; }
+		float GetYOffset() const { return m_YOffset; }
+
 #if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 		std::string ToString() const override {
 			std::stringstream ss;

@@ -7,7 +7,7 @@ public:
 	TestLayer() : Layer("Test") {}
 
 	void OnUpdate() override {
-		ENGM_INFO("TestLayer::Update");
+
 	}
 
 	void OnEvent(Enigma::Event& event) override {

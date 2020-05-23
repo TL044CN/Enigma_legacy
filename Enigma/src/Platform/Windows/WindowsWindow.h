@@ -19,6 +19,7 @@ namespace Enigma {
 		inline void SetEventCallback(const EventCallbackFunction& callback) override { m_Data.EventCallback = callback; }
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
 	private:
 		virtual void Init(const WindowProperties& props);
 		virtual void Shutdown();
