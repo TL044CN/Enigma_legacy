@@ -29,7 +29,5 @@ public:
 };
 
 Enigma::Application* Enigma::CreateApplication() {
-
 	return new Sandbox();
-
 }
