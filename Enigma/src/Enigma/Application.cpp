@@ -1,6 +1,8 @@
 #include "engmpch.h"
 #include "Application.h"
 
+#include "Input.h"
+
 #include "Enigma/Log.h"
 #include <glad/glad.h>
 

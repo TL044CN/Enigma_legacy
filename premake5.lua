@@ -1,5 +1,6 @@
 workspace "Enigma"
 	architecture "x64"
+	startproject "Sandbox"
 	configurations{"Debug", "Release", "Dist"}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -56,7 +57,7 @@ project "Enigma"
 		}
 
 		postbuildcommands {
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/"..outputdir.."/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/"..outputdir.."/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"

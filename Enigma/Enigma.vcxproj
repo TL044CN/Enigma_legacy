@@ -93,7 +93,7 @@
       <ImportLibrary>..\bin\Debug-windows-x86_64\Enigma\Enigma.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Enigma\Enigma.dll "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -119,7 +119,7 @@
       <ImportLibrary>..\bin\Release-windows-x86_64\Enigma\Enigma.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Enigma\Enigma.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Enigma\Enigma.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Release-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Enigma\Enigma.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Enigma\Enigma.dll "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
@@ -145,7 +145,7 @@
       <ImportLibrary>..\bin\Dist-windows-x86_64\Enigma\Enigma.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Enigma\Enigma.dll "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -158,11 +158,13 @@
     <ClInclude Include="src\Enigma\Events\KeyEvent.h" />
     <ClInclude Include="src\Enigma\Events\MouseEvent.h" />
     <ClInclude Include="src\Enigma\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Enigma\Input.h" />
     <ClInclude Include="src\Enigma\Layer.h" />
     <ClInclude Include="src\Enigma\Layerstack.h" />
     <ClInclude Include="src\Enigma\Log.h" />
     <ClInclude Include="src\Enigma\Window.h" />
     <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\engmpch.h" />
   </ItemGroup>
@@ -173,6 +175,7 @@
     <ClCompile Include="src\Enigma\Layerstack.cpp" />
     <ClCompile Include="src\Enigma\Log.cpp" />
     <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\engmpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
