@@ -7,3 +7,6 @@
 [submodule ".\\Enigma\\vendor\\ImGui"]
 	path = .\\Enigma\\vendor\\ImGui
 	url = http://github.com/TL044CN/imgui
+[submodule ".\\Enigma\\vendor\\glm"]
+	path = .\\Enigma\\vendor\\glm
+	url = https://github.com/g-truc/glm
