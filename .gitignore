@@ -1,9 +1,11 @@
 # Directories
 .vs/
-bin/
+/bin/
 bin-int/
 
 #files
 *.user
 *.xcf
 Sandbox/imgui.ini
+*.vcxproj
+*.sln

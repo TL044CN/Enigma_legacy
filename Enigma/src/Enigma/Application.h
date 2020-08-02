@@ -14,7 +14,7 @@ namespace Enigma {
 	class ENIGMA_API Application {
 	public:
 		Application();
-		virtual ~Application();
+		virtual ~Application() = default;
 
 		void Run();
 
