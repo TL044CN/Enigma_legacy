@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Enigma/Window.h"
+#include "Enigma/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -26,6 +27,7 @@ namespace Enigma {
 		virtual void Shutdown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;
