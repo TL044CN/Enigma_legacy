@@ -51,7 +51,7 @@ namespace Enigma {
 		float m_XOffset, m_YOffset;
 	};
 
-	class MouseButtonEvent : public Event {
+	class ENIGMA_API MouseButtonEvent : public Event {
 	public:
 		inline int GetMouseButton() const { return m_Button; }
 

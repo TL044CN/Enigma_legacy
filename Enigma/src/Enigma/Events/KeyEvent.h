@@ -7,7 +7,7 @@
 
 namespace Enigma {
 
-	class KeyEvent : public Event {
+	class ENIGMA_API KeyEvent : public Event {
 	public:
 		int GetKeycode() const { return m_KeyCode; }
 
