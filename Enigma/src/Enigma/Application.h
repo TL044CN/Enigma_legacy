@@ -6,6 +6,9 @@
 
 #include "Enigma/ImGui/ImGuiLayer.h"
 
+#include "Enigma/Renderer/Shader.h"
+#include "Enigma/Renderer/Buffer.h"
+
 namespace Enigma {
 
 	class ENIGMA_API Application {
@@ -31,7 +34,10 @@ namespace Enigma {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_vertexArray, m_vertexBuffer, m_indexBuffer;
+		unsigned int m_vertexArray;
+		std::unique_ptr<Shader> m_shader;
+		std::unique_ptr<VertexBuffer> m_vertexBuffer;
+		std::unique_ptr<IndexBuffer> m_indexBuffer;
 	private:
 		static Application* s_Instance;
 	};

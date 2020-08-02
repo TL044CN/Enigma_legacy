@@ -37,14 +37,14 @@ namespace Enigma {
 	#define ENGM_ASSERT(condition,...)
 #endif
 //Core logging macros
-//	#define ENGM_CORE_FATAL(...)              ::Enigma::Log::GetCoreLogger()->fatal(__VA_ARGS__)
+	#define ENGM_CORE_FATAL(...)              ::Enigma::Log::GetCoreLogger()->critical(__VA_ARGS__)
 	#define ENGM_CORE_ERROR(...)              ::Enigma::Log::GetCoreLogger()->error(__VA_ARGS__)
 	#define ENGM_CORE_WARN(...)               ::Enigma::Log::GetCoreLogger()->warn(__VA_ARGS__)
 	#define ENGM_CORE_INFO(...)               ::Enigma::Log::GetCoreLogger()->info(__VA_ARGS__)
 	#define ENGM_CORE_TRACE(...)              ::Enigma::Log::GetCoreLogger()->trace(__VA_ARGS__)
 
 //Client logging macros
-//	#define ENGM_FATAL(...)                   ::Enigma::Log::GetClientLogger()->fatal(__VA_ARGS__)
+	#define ENGM_FATAL(...)                   ::Enigma::Log::GetClientLogger()->critical(__VA_ARGS__)
 	#define ENGM_ERROR(...)	                  ::Enigma::Log::GetClientLogger()->error(__VA_ARGS__)
 	#define ENGM_WARN(...)	                  ::Enigma::Log::GetClientLogger()->warn(__VA_ARGS__)
 	#define ENGM_INFO(...)	                  ::Enigma::Log::GetClientLogger()->info(__VA_ARGS__)

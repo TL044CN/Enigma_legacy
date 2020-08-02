@@ -152,6 +152,10 @@
     </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Enigma\Renderer\Shader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Enigma\Renderer\Renderer.h" />
+    <ClInclude Include="src\Enigma\Renderer\Buffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -182,5 +186,9 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\Buffer.cpp" />
   </ItemGroup>
 </Project>
