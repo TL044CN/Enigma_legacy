@@ -1,96 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Enigma">
-      <UniqueIdentifier>{F6D7D4B0-E279-FF86-CB34-13DBB77586D7}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Enigma\Events">
-      <UniqueIdentifier>{1A33D516-86F3-504D-4F2E-9ACABBAD9529}</UniqueIdentifier>
+    <Filter Include="src\Enigma">
+      <UniqueIdentifier>{2DB1330E-1969-755B-8270-4EB76E47104C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Enigma\ImGui">
-      <UniqueIdentifier>{A0ED5894-8C50-E838-35D6-20EF2118B4BB}</UniqueIdentifier>
+    <Filter Include="src\Enigma\Events">
+      <UniqueIdentifier>{71A80A8E-DDBE-0824-2636-9445928BD9AB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform">
-      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    <Filter Include="src\Enigma\ImGui">
+      <UniqueIdentifier>{179479A7-038D-98F9-2CBF-7D7E18177805}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Platform\Windows">
-      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    <Filter Include="src\Platform">
+      <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\Windows">
+      <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\glm">
+      <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\glm\glm">
+      <UniqueIdentifier>{D11AC9C9-BDE8-BCCF-A67C-2DF692E99834}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Enigma.h" />
+    <ClInclude Include="src\Enigma.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Application.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Core.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\EntryPoint.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Events\ApplicationEvent.h">
-      <Filter>Enigma\Events</Filter>
+      <Filter>src\Enigma\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Events\Event.h">
-      <Filter>Enigma\Events</Filter>
+      <Filter>src\Enigma\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Events\KeyEvent.h">
-      <Filter>Enigma\Events</Filter>
+      <Filter>src\Enigma\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Events\MouseEvent.h">
-      <Filter>Enigma\Events</Filter>
+      <Filter>src\Enigma\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\ImGui\ImGuiLayer.h">
-      <Filter>Enigma\ImGui</Filter>
+      <Filter>src\Enigma\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Input.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Layer.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Layerstack.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Log.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Window.h">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\engmpch.h" />
+    <ClInclude Include="src\engmpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\common.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\exponential.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\ext.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\fwd.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\geometric.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\glm.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\integer.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat2x2.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat2x3.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat2x4.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat3x2.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat3x3.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat3x4.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat4x2.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat4x3.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\mat4x4.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\matrix.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\packing.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\trigonometric.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\vec2.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\vec3.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\vec4.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
+      <Filter>vendor\glm\glm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\ImGui\ImGuiBuild.cpp">
-      <Filter>Enigma\ImGui</Filter>
+      <Filter>src\Enigma\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\ImGui\ImGuiLayer.cpp">
-      <Filter>Enigma\ImGui</Filter>
+      <Filter>src\Enigma\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Layer.cpp">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Layerstack.cpp">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Log.cpp">
-      <Filter>Enigma</Filter>
+      <Filter>src\Enigma</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
-      <Filter>Platform\Windows</Filter>
+      <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\engmpch.cpp" />
+    <ClCompile Include="src\engmpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

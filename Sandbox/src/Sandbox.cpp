@@ -12,10 +12,10 @@ public:
 	}
 
 	virtual void OnImGuiRender() override {
-/*		ImGui::Begin("Test");
+		ImGui::Begin("Test");
 		ImGui::Text("Test String");
 		ImGui::End();
-*/	}
+	}
 
 	void OnEvent(Enigma::Event& event) override {
 		ENGM_TRACE("{0}", event);
