@@ -4,6 +4,8 @@
 #include "Enigma/Layerstack.h"
 #include "Enigma/Events/ApplicationEvent.h"
 
+#include "Enigma/ImGui/ImGuiLayer.h"
+
 namespace Enigma {
 
 	class ENIGMA_API Application {
@@ -25,6 +27,7 @@ namespace Enigma {
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		std::unique_ptr<Window> m_Window;
+		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 	private:

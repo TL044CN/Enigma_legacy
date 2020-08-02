@@ -163,18 +163,17 @@
     <ClInclude Include="src\Enigma\Layerstack.h" />
     <ClInclude Include="src\Enigma\Log.h" />
     <ClInclude Include="src\Enigma\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\engmpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp" />
+    <ClCompile Include="src\Enigma\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Enigma\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Enigma\Layer.cpp" />
     <ClCompile Include="src\Enigma\Layerstack.cpp" />
     <ClCompile Include="src\Enigma\Log.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\engmpch.cpp">
