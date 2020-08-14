@@ -1,16 +1,17 @@
 #pragma once
 
-namespace Enigma {
+#include "RenderCommand.h"
 
-	enum class RendererAPI {
-		None = 0, OpenGL
-	};
+namespace Enigma {
 
 	class Renderer {
 	public:
-		inline static RendererAPI GetAPI() { return s_rendererAPI; }
-	private:
-		static RendererAPI s_rendererAPI;
+		static void BeginScene();
+		static void EndScene();
+
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+
+		inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 	};
 
 }

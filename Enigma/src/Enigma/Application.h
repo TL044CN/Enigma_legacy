@@ -8,6 +8,7 @@
 
 #include "Enigma/Renderer/Shader.h"
 #include "Enigma/Renderer/Buffer.h"
+#include "Enigma/Renderer/VertexArray.h"
 
 namespace Enigma {
 
@@ -34,10 +35,12 @@ namespace Enigma {
 		bool m_Running = true;
 		LayerStack m_LayerStack;
 
-		unsigned int m_vertexArray;
-		std::unique_ptr<Shader> m_shader;
-		std::unique_ptr<VertexBuffer> m_vertexBuffer;
-		std::unique_ptr<IndexBuffer> m_indexBuffer;
+		std::shared_ptr<Shader> m_Shader;
+		std::shared_ptr<VertexArray> m_VertexArray;
+
+		std::shared_ptr<Shader> m_BlueShader;
+		std::shared_ptr<VertexArray> m_SquareVA;
+
 	private:
 		static Application* s_Instance;
 	};

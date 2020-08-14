@@ -13,8 +13,14 @@
     <Filter Include="src\Enigma\ImGui">
       <UniqueIdentifier>{179479A7-038D-98F9-2CBF-7D7E18177805}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Enigma\Renderer">
+      <UniqueIdentifier>{73975132-DFF8-2E40-6866-75F2D4C665FF}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL">
+      <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -69,8 +75,26 @@
     <ClInclude Include="src\Enigma\Log.h">
       <Filter>src\Enigma</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Buffer.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\GraphicsContext.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Renderer.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Shader.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Window.h">
       <Filter>src\Enigma</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -150,12 +174,11 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enigma\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Enigma\Renderer\Shader.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Enigma\Renderer\Renderer.h" />
-    <ClInclude Include="src\Enigma\Renderer\Buffer.h" />
+    <ClInclude Include="src\Enigma\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Enigma\Renderer\RendererAPI.h" />
+    <ClInclude Include="src\Enigma\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -176,6 +199,21 @@
     <ClCompile Include="src\Enigma\Log.cpp">
       <Filter>src\Enigma</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Buffer.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Renderer.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Shader.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
@@ -185,10 +223,10 @@
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Enigma\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Enigma\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Enigma\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\RendererAPI.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\RenderCommand.cpp" />
   </ItemGroup>
 </Project>

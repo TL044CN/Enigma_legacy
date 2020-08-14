@@ -1,6 +1,5 @@
 #include "engmpch.h"
 #include <Enigma.h>
-
 #include "imgui/imgui.h"
 
 class TestLayer : public Enigma::Layer {
