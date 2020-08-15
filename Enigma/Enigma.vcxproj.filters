@@ -200,6 +200,7 @@
     </ClInclude>
     <ClInclude Include="src\Enigma\Core\Keycodes.h" />
     <ClInclude Include="src\Enigma\Core\Mousecodes.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -262,5 +263,6 @@
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>
