@@ -2,18 +2,14 @@
 #include "Core.h"
 #include "Window.h"
 #include "Enigma/Layerstack.h"
+#include "Enigma/Events/Event.h"
 #include "Enigma/Events/ApplicationEvent.h"
-
+#include "Enigma/Core/Timestep.h"
 #include "Enigma/ImGui/ImGuiLayer.h"
-
-#include "Enigma/Renderer/Shader.h"
-#include "Enigma/Renderer/Buffer.h"
-#include "Enigma/Renderer/VertexArray.h"
-#include "Enigma/Renderer/OrthographicCamera.h"
 
 namespace Enigma {
 
-	class ENIGMA_API Application {
+	class Application {
 	public:
 		Application();
 		virtual ~Application() = default;
@@ -35,15 +31,8 @@ namespace Enigma {
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 
-		std::shared_ptr<Shader> m_Shader;
-		std::shared_ptr<VertexArray> m_VertexArray;
-
-		std::shared_ptr<Shader> m_BlueShader;
-		std::shared_ptr<VertexArray> m_SquareVA;
-
-		OrthographicCamera m_Camera;
-	private:
 		static Application* s_Instance;
 	};
 

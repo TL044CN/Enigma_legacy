@@ -7,7 +7,7 @@
 
 namespace Enigma {
 
-	class ENIGMA_API KeyEvent : public Event {
+	class KeyEvent : public Event {
 	public:
 		int GetKeycode() const { return m_KeyCode; }
 
@@ -18,7 +18,7 @@ namespace Enigma {
 		int m_KeyCode;
 	};
 
-	class ENIGMA_API KeyPressedEvent : public KeyEvent {
+	class KeyPressedEvent : public KeyEvent {
 	public:
 		KeyPressedEvent(int keycode, int repeatCount) : KeyEvent(keycode), m_RepeatCount(repeatCount) {}
 		int GetRepearCount() const { return m_RepeatCount; };
@@ -36,7 +36,7 @@ namespace Enigma {
 		int m_RepeatCount;
 	};
 
-	class ENIGMA_API KeyReleasedEvent : public KeyEvent {
+	class KeyReleasedEvent : public KeyEvent {
 	public:
 		KeyReleasedEvent(int keycode) : KeyEvent(keycode) {}
 
@@ -51,7 +51,7 @@ namespace Enigma {
 		EVENT_CLASS_TYPE(KeyReleased)
 	};
 
-	class ENIGMA_API KeyTypedEvent : public KeyEvent {
+	class KeyTypedEvent : public KeyEvent {
 	public:
 		KeyTypedEvent(int keycode) :KeyEvent(keycode) {}
 

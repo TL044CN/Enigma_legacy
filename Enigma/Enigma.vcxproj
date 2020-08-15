@@ -143,6 +143,9 @@
     <ClInclude Include="src\Enigma.h" />
     <ClInclude Include="src\Enigma\Application.h" />
     <ClInclude Include="src\Enigma\Core.h" />
+    <ClInclude Include="src\Enigma\Core\Keycodes.h" />
+    <ClInclude Include="src\Enigma\Core\Mousecodes.h" />
+    <ClInclude Include="src\Enigma\Core\Timestep.h" />
     <ClInclude Include="src\Enigma\EntryPoint.h" />
     <ClInclude Include="src\Enigma\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Enigma\Events\Event.h" />

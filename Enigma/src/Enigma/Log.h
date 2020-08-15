@@ -7,7 +7,7 @@
 
 namespace Enigma {
 
-	class ENIGMA_API Log {
+	class Log {
 	public:
 		static void Init();
 

@@ -19,7 +19,7 @@ namespace Enigma {
 	};
 
 	//Enigma Engine Window Interface. NO DATA WHATSOEVER (also more for Desktops)
-	class ENIGMA_API Window {
+	class Window {
 	public:
 		using EventCallbackFunction = std::function<void(Event&)>;
 

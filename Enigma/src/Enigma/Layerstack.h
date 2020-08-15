@@ -5,7 +5,7 @@
 
 namespace Enigma {
 
-	class ENIGMA_API LayerStack {
+	class LayerStack {
 	public:
 		LayerStack();
 		~LayerStack();

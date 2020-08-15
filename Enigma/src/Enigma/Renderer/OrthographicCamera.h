@@ -12,7 +12,7 @@ namespace Enigma {
 		void SetPosition(const glm::vec3& position) { m_Position = position; RecalculateViewMatrix(); }
 
 		float GetRotation() const { return m_Rotation; }
-		void setRotation(float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
+		void SetRotation(float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
 
 		const glm::mat4& GetProjectionMatrix() const {return m_ProjectionMatrix;}
 		const glm::mat4& GetViewMatrix() const {return m_ViewMatrix;}
