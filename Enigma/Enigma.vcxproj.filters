@@ -179,6 +179,7 @@
     <ClInclude Include="src\Enigma\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Enigma\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
+    <ClInclude Include="src\Enigma\Renderer\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -228,5 +229,6 @@
     <ClCompile Include="src\Enigma\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Enigma\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

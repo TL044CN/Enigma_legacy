@@ -9,6 +9,7 @@
 #include "Enigma/Renderer/Shader.h"
 #include "Enigma/Renderer/Buffer.h"
 #include "Enigma/Renderer/VertexArray.h"
+#include "Enigma/Renderer/OrthographicCamera.h"
 
 namespace Enigma {
 
@@ -41,6 +42,7 @@ namespace Enigma {
 		std::shared_ptr<Shader> m_BlueShader;
 		std::shared_ptr<VertexArray> m_SquareVA;
 
+		OrthographicCamera m_Camera;
 	private:
 		static Application* s_Instance;
 	};
