@@ -10,6 +10,7 @@ IncludeDir["GLFW"] = "Enigma/vendor/GLFW/include"
 IncludeDir["Glad"] = "Enigma/vendor/Glad/include"
 IncludeDir["ImGui"] = "Enigma/vendor/ImGui"
 IncludeDir["glm"] = "Enigma/vendor/glm"
+IncludeDir["stb_image"] = "Enigma/vendor/stb_image"
 
 group "Dependencies"
 	include "Enigma/vendor/GLFW"
@@ -35,7 +36,9 @@ project "Enigma"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/*.hpp",
-		"%{prj.name}/vendor/glm/glm/*.inl"
+		"%{prj.name}/vendor/glm/glm/*.inl",
+		"%{prj.name}/vendor/std_image/**.cpp",
+		"%{prj.name}/vendor/std_image/**.h"
 	}
 
 	defines {
@@ -48,7 +51,8 @@ project "Enigma"
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.std_image}"
 	}
 
 	links{

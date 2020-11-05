@@ -28,6 +28,9 @@
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\libpng">
+      <UniqueIdentifier>{6CFBB97A-D85C-9788-61CA-DD3ACD2ACE47}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -47,6 +50,12 @@
     </ClInclude>
     <ClInclude Include="src\Enigma\Core.h">
       <Filter>src\Enigma</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Keycodes.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Mousecodes.h">
+      <Filter>src\Enigma\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Core\Timestep.h">
       <Filter>src\Enigma\Core</Filter>
@@ -102,6 +111,9 @@
     <ClInclude Include="src\Enigma\Renderer\Shader.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Texture.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\VertexArray.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
@@ -117,6 +129,12 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -125,6 +143,9 @@
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\libpng\png.h">
+      <Filter>src\Platform\libpng</Filter>
     </ClInclude>
     <ClInclude Include="src\engmpch.h">
       <Filter>src</Filter>
@@ -198,9 +219,6 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Keycodes.h" />
-    <ClInclude Include="src\Enigma\Core\Mousecodes.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -239,6 +257,9 @@
     <ClCompile Include="src\Enigma\Renderer\Shader.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Texture.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Enigma\Renderer\VertexArray.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
@@ -249,6 +270,12 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
@@ -263,6 +290,6 @@
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
 </Project>

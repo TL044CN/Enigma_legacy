@@ -16,7 +16,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f
 		};
 
-		std::shared_ptr<Enigma::VertexBuffer> vertexBuffer;
+		Enigma::Ref<Enigma::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Enigma::VertexBuffer::Create(vertices, sizeof(vertices)));
 		Enigma::BufferLayout layout = {
 			{ Enigma::ShaderDataType::Float3, "a_Position" },
@@ -26,28 +26,29 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Enigma::IndexBuffer> indexBuffer;
+		Enigma::Ref<Enigma::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Enigma::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 		m_SquareVA.reset(Enigma::VertexArray::Create());
 
-		float squareVertices[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f
+		float squareVertices[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 0.0f
 		};
 
-		std::shared_ptr<Enigma::VertexBuffer> squareVB;
+		Enigma::Ref<Enigma::VertexBuffer> squareVB;
 		squareVB.reset(Enigma::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 		squareVB->SetLayout({
-			{ Enigma::ShaderDataType::Float3, "a_Position" }
+			{ Enigma::ShaderDataType::Float3, "a_Position" },
+			{ Enigma::ShaderDataType::Float2, "a_TexCoord" }
 			});
 		m_SquareVA->AddVertexBuffer(squareVB);
 
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		std::shared_ptr<Enigma::IndexBuffer> squareIB;
+		Enigma::Ref<Enigma::IndexBuffer> squareIB;
 		squareIB.reset(Enigma::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -116,6 +117,43 @@ public:
 		)";
 
 		m_FlatColorShader.reset(Enigma::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+	
+		std::string textureShaderVertexSrc = R"(
+			#version 330 core
+			layout(location = 0) in vec3 a_Position;
+			layout(location = 1) in vec2 a_TexCoord;
+			
+			uniform mat4 u_ViewProjection;
+			uniform mat4 u_Transform;
+
+			out vec2 v_TexCoord;
+
+			void main(){
+				v_TexCoord = a_TexCoord;
+				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+			}
+		)";
+
+		std::string textureShaderFragmentSrc = R"(
+			#version 330 core
+
+			layout(location = 0) out vec4 color;
+
+			in vec2 v_TexCoord;
+
+			uniform sampler2D u_Texture;
+
+			void main(){
+				color = texture(u_Texture, v_TexCoord);
+			}
+		)";
+
+		m_TextureShader.reset(Enigma::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+
+		m_Texture = Enigma::Texture2D::Create("assets/textures/test.png");
+
+		std::dynamic_pointer_cast<Enigma::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Enigma::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Enigma::Timestep ts) override {
@@ -154,7 +192,10 @@ public:
 				Enigma::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 
-		Enigma::Renderer::Submit(m_Shader, m_VertexArray);
+//		Enigma::Renderer::Submit(m_Shader, m_VertexArray);
+		m_Texture->Bind();
+		Enigma::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
 
 		Enigma::Renderer::EndScene();
 	}
@@ -170,12 +211,13 @@ public:
 	}
 
 private:
-	std::shared_ptr<Enigma::Shader> m_Shader;
-	std::shared_ptr<Enigma::VertexArray> m_VertexArray;
+	Enigma::Ref<Enigma::Shader> m_Shader;
+	Enigma::Ref<Enigma::VertexArray> m_VertexArray;
 
-	std::shared_ptr<Enigma::Shader> m_FlatColorShader;
-	std::shared_ptr<Enigma::VertexArray> m_SquareVA;
+	Enigma::Ref<Enigma::Shader> m_FlatColorShader, m_TextureShader;
+	Enigma::Ref<Enigma::VertexArray> m_SquareVA;
 
+	Enigma::Ref<Enigma::Texture2D> m_Texture;
 	Enigma::OrthographicCamera m_Camera;
 	glm::vec3 m_CameraPosition;
 	float m_CameraMoveSpeed = 3.0f;
