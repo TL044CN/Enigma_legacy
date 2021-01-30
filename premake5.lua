@@ -37,8 +37,8 @@ project "Enigma"
 		"%{prj.name}/src/**.cpp",
 		"%{prj.name}/vendor/glm/glm/*.hpp",
 		"%{prj.name}/vendor/glm/glm/*.inl",
-		"%{prj.name}/vendor/std_image/**.cpp",
-		"%{prj.name}/vendor/std_image/**.h"
+		"%{prj.name}/vendor/sdb_image/**.cpp",
+		"%{prj.name}/vendor/stb_image/**.h"
 	}
 
 	defines {
@@ -52,7 +52,7 @@ project "Enigma"
 		"%{IncludeDir.Glad}",
 		"%{IncludeDir.ImGui}",
 		"%{IncludeDir.glm}",
-		"%{IncludeDir.std_image}"
+		"%{IncludeDir.stb_image}"
 	}
 
 	links{

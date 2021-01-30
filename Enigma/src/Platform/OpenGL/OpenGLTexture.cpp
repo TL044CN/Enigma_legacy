@@ -1,8 +1,7 @@
 #include "engmpch.h"
 #include "OpenGLTexture.h"
 
-//#include "stb_image.h"
-#include "../stb_image/stb_image.h"
+#include "stb_image.h"
 
 #include "Enigma/Log.h"
 #include <glad/glad.h>

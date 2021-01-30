@@ -40,6 +40,24 @@
     <Filter Include="vendor\glm\glm">
       <UniqueIdentifier>{D11AC9C9-BDE8-BCCF-A67C-2DF692E99834}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image\deprecated">
+      <UniqueIdentifier>{8DC87CC4-F9D5-AAAA-82BC-A695EEC87661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image\tests">
+      <UniqueIdentifier>{AFA0F601-9B9A-1F54-8407-B66470A085C0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image\tests\caveview">
+      <UniqueIdentifier>{D8D269FA-44B6-783A-4DB9-A676B91B3F8B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image\tests\oversample">
+      <UniqueIdentifier>{FC03A82B-6872-FDAA-B15B-B8AA1D09F346}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image\tests\prerelease">
+      <UniqueIdentifier>{E603DB3D-5272-30BD-9B5B-EBBC07092659}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Enigma.h">
@@ -219,6 +237,96 @@
     <ClInclude Include="vendor\glm\glm\vector_relational.hpp">
       <Filter>vendor\glm\glm</Filter>
     </ClInclude>
+    <ClInclude Include="vendor\stb_image\deprecated\rrsprintf.h">
+      <Filter>vendor\stb_image\deprecated</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_c_lexer.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_connected_components.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_divide.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_ds.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_dxt.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_easy_font.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_herringbone_wang_tile.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image_resize.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image_write.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_include.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_leakcheck.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_perlin.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_rect_pack.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_sprintf.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_textedit.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_tilemap_editor.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_truetype.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_voxel_render.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stretchy_buffer.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\cave_parse.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\caveview.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\glext.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\glext_list.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\stb_gl.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\caveview\stb_glprog.h">
+      <Filter>vendor\stb_image\tests\caveview</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\oversample\stb_wingraph.h">
+      <Filter>vendor\stb_image\tests\oversample</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\tests\prerelease\stb_lib.h">
+      <Filter>vendor\stb_image\tests\prerelease</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -290,6 +398,5 @@
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
 </Project>

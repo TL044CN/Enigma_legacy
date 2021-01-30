@@ -16,3 +16,4 @@
 	#include <Windows.h>
 #endif
 
+#define STB_IMAGE_IMPLEMENTATION
