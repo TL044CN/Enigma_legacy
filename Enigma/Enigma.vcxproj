@@ -151,6 +151,7 @@
     <ClInclude Include="src\Enigma\Events\Event.h" />
     <ClInclude Include="src\Enigma\Events\KeyEvent.h" />
     <ClInclude Include="src\Enigma\Events\MouseEvent.h" />
+    <ClInclude Include="src\Enigma\OrthographicCameraController.h" />
     <ClInclude Include="src\Enigma\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Enigma\Input.h" />
     <ClInclude Include="src\Enigma\Layer.h" />
@@ -237,6 +238,7 @@
     <ClCompile Include="src\Enigma\Layer.cpp" />
     <ClCompile Include="src\Enigma\Layerstack.cpp" />
     <ClCompile Include="src\Enigma\Log.cpp" />
+    <ClCompile Include="src\Enigma\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Enigma\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Enigma\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Enigma\Renderer\RenderCommand.cpp" />

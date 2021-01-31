@@ -10,11 +10,6 @@
 #include "Enigma/Core/Timestep.h"
 #include "Enigma/ImGui/ImGuiLayer.h"
 
-//--Input--
-#include "Enigma/Input.h"
-#include "Enigma/Core/Keycodes.h"
-#include "Enigma/Core/Mousecodes.h"
-
 //--Renderer--
 #include "Enigma/Renderer/Renderer.h"
 #include "Enigma/Renderer/RenderCommand.h"
@@ -24,5 +19,8 @@
 #include "Enigma/Renderer/VertexArray.h"
 #include "Enigma/Renderer/OrthographicCamera.h"
 
-//--Entrypoint--
-#include "Enigma/EntryPoint.h"
+//--Input--
+#include "Enigma/Input.h"
+#include "Enigma/Core/Keycodes.h"
+#include "Enigma/Core/Mousecodes.h"
+#include "Enigma/OrthographicCameraController.h"

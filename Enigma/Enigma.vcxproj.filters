@@ -327,6 +327,7 @@
     <ClInclude Include="vendor\stb_image\tests\prerelease\stb_lib.h">
       <Filter>vendor\stb_image\tests\prerelease</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -398,5 +399,6 @@
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enigma\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>
