@@ -162,6 +162,7 @@
     <ClInclude Include="src\Enigma\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Enigma\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Enigma\Renderer\Renderer.h" />
+    <ClInclude Include="src\Enigma\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Enigma\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Enigma\Renderer\Shader.h" />
     <ClInclude Include="src\Enigma\Renderer\Texture.h" />
@@ -243,6 +244,7 @@
     <ClCompile Include="src\Enigma\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Enigma\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\Enigma\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Enigma\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Enigma\Renderer\Shader.cpp" />
     <ClCompile Include="src\Enigma\Renderer\Texture.cpp" />

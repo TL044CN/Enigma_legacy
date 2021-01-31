@@ -12,6 +12,7 @@
 
 //--Renderer--
 #include "Enigma/Renderer/Renderer.h"
+#include "Enigma/Renderer/Renderer2D.h"
 #include "Enigma/Renderer/RenderCommand.h"
 #include "Enigma/Renderer/Buffer.h"
 #include "Enigma/Renderer/Shader.h"

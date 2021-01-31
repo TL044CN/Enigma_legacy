@@ -328,6 +328,7 @@
       <Filter>vendor\stb_image\tests\prerelease</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\OrthographicCameraController.h" />
+    <ClInclude Include="src\Enigma\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\Application.cpp">
@@ -400,5 +401,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Enigma\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>
