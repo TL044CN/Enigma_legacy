@@ -1,72 +1,108 @@
 #include "engmpch.h"
 #include "OpenGLShader.h"
 #include "Enigma/Log.h"
+#include <fstream>
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
 
 namespace Enigma {
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSource, const std::string& fragmentSource) {
-		//Create empty vertex shader handle
-		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	static GLenum ShaderTypeFromString(const std::string& type) {
+		if(type == "vertex")
+			return GL_VERTEX_SHADER;
+		if (type == "fragment")
+			return GL_FRAGMENT_SHADER;
+		ENGM_CORE_ERROR("Unknown Shader Type");
+	}
 
-		// send vertex shader source to GL
-		const GLchar* source = vertexSource.c_str();
-		glShaderSource(vertexShader, 1, &source, 0);
-		glCompileShader(vertexShader);					//compile shader
+	OpenGLShader::OpenGLShader(const std::string& path) {
+		std::string source = ReadFile(path);
+		auto shaderSource = PreProcess(source);
+		Compile(shaderSource);
 
-		GLint compiled = 0;
-		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &compiled);
-		if (compiled == GL_FALSE) {
-			GLint maxLength = 0;
+		//get Shader name from File path
+		auto lastSlash = path.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = path.rfind('.');
+		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
+		m_Name = path.substr(lastSlash, count);
+	}
 
-			//get error message
-			glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &maxLength);		//get length of the message
-			std::vector<GLchar> log(maxLength);									//create buffer for error message
-			glGetShaderInfoLog(vertexShader, maxLength, &maxLength, &log[0]);	//store log message in buffer
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSource, const std::string& fragmentSource) :m_Name(name) {
+		std::unordered_map<GLenum, std::string> sources;
+		sources[GL_VERTEX_SHADER] = vertexSource;
+		sources[GL_FRAGMENT_SHADER] = fragmentSource;
+		Compile(sources);
+	}
 
-			glDeleteShader(vertexShader);
+	OpenGLShader::~OpenGLShader() {
+		glDeleteProgram(m_RendererID);
+	}
 
-			ENGM_CORE_ERROR("{0}", log.data());
-			ENGM_CORE_ASSERT(false, "Vertex shader did not compile!");
-			return;
+	std::string OpenGLShader::ReadFile(const std::string& path) {
+		std::string result;
+		std::ifstream input(path, std::ios::in | std::ios::binary);
+		if (input) {
+			//seek eof
+			input.seekg(0, std::ios::end);
+			//resize result size to actual size of the shader source
+			result.resize(input.tellg());
+			//jump back to the beginning of the file then read it
+			input.seekg(0, std::ios::beg);
+			input.read(&result[0], result.size());
+			input.close();
+		} else {
+			ENGM_CORE_ERROR("Could not open file {0}", path);
+		}
+		return result;
+	}
+
+	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source) {
+		std::unordered_map<GLenum, std::string> sources;
+		const char* typeToken = "#type";
+		size_t typeTokenLength = strlen(typeToken);
+		size_t pos = source.find(typeToken, 0);
+		while (pos != std::string::npos) {
+			size_t eol = source.find_first_of("\r\n", pos);
+			ENGM_CORE_ASSERT(eol != std::string::npos, "Syntax Error!");
+			size_t begin = pos + typeTokenLength + 1;
+			std::string type = source.substr(begin, eol - begin);
+			ENGM_CORE_ASSERT(ShaderTypeFromString(type), "Invalid Shadertype!");
+			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
+			pos = source.find(typeToken, nextLinePos);
+			sources[ShaderTypeFromString(type)] = source.substr(nextLinePos, pos - (nextLinePos == std::string::npos ? source.size() - 1 : nextLinePos));
+		}
+		return sources;
+	}
+
+	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources) {
+		GLuint program = glCreateProgram();
+		ENGM_CORE_ASSERT(shaderSources.size() <= 2, "Maximum number of shaders is 2 for now.");
+		std::array<GLenum, 2> glShaderIDs;
+		int glShaderIDIndex = 0;
+		for (auto& shaderSource : shaderSources) {
+			GLenum type = shaderSource.first;
+			const std::string& source = shaderSource.second;
+			GLuint shader = glCreateShader(type);
+			const GLchar* sourceCString = source.c_str();
+			glShaderSource(shader, 1, &sourceCString, 0);
+			glCompileShader(shader);
+			GLint isCompiled = 0;
+			glGetShaderiv(shader, GL_COMPILE_STATUS, &isCompiled);
+			if (isCompiled == GL_FALSE) {
+				GLint maxLength = 0;
+				glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &maxLength);
+				std::vector<GLchar> reason(maxLength);
+				glGetShaderInfoLog(shader, maxLength, &maxLength, &reason[0]);
+				glDeleteShader(shader);
+				ENGM_CORE_ERROR("Shader Compilation Error:\n{0}", reason.data());
+				break;
+			}
+			glAttachShader(program, shader);
+			glShaderIDs[glShaderIDIndex++] = shader;
 		}
 
-		//create empty fragment shader handle
-		GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		//send fragment shader source to GL
-		source = fragmentSource.c_str();
-		glShaderSource(fragmentShader, 1, &source, 0);
-		glCompileShader(fragmentShader);				//compile shader
-
-		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &compiled);
-		if (compiled == GL_FALSE) {
-			GLint maxLength = 0;
-
-			//get error message
-			glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &maxLength);		//get length of the message
-			std::vector<GLchar> log(maxLength);									//create buffer for error message
-			glGetShaderInfoLog(fragmentShader, maxLength, &maxLength, &log[0]);	//store log message in buffer
-
-			//delete both shaders upon error
-			glDeleteShader(vertexShader);
-			glDeleteShader(fragmentShader);
-
-			ENGM_CORE_ERROR("{0}", log.data());
-			ENGM_CORE_ASSERT(false, "Fragment shader did not compile!");
-			return;
-		}
-
-		/*	link compiled shaders into program	*/
-
-		//create new program
-		m_RendererID = glCreateProgram();
-		GLuint program = m_RendererID;
-
-		//attach shaders to program
-		glAttachShader(program, vertexShader);
-		glAttachShader(program, fragmentShader);
+		m_RendererID = program;
 
 		//link program
 		glLinkProgram(program);
@@ -80,24 +116,17 @@ namespace Enigma {
 			glGetProgramiv(program, GL_INFO_LOG_LENGTH, &maxLength);		//get length of the message
 			std::vector<GLchar> log(maxLength);									//create buffer for error message
 			glGetShaderInfoLog(program, maxLength, &maxLength, &log[0]);	//store log message in buffer
-
-			//delete program and shaders
-			glDeleteShader(vertexShader);
-			glDeleteShader(fragmentShader);
 			glDeleteProgram(program);
+			for (auto id : glShaderIDs)
+				glDeleteShader(id);
 
 			ENGM_CORE_ERROR("{0}", log.data());
 			ENGM_CORE_ASSERT(false, "Shaders did not link correctly!");
 			return;
 		}
 
-		//detach shaders after successfull link
-		glDetachShader(program, vertexShader);
-		glDetachShader(program, fragmentShader);
-	}
-
-	OpenGLShader::~OpenGLShader() {
-		glDeleteProgram(m_RendererID);
+		for (auto id : glShaderIDs)
+			glDetachShader(program, id);
 	}
 
 	void OpenGLShader::Bind() const {

@@ -84,7 +84,7 @@ public:
 			}
 		)";
 
-		m_Shader.reset(Enigma::Shader::Create(vertexSrc, fragmentSrc));
+		m_Shader = Enigma::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
 		std::string flatColorShaderVertexSrc = R"(
 			#version 330 core
@@ -116,44 +116,14 @@ public:
 			}
 		)";
 
-		m_FlatColorShader.reset(Enigma::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
-	
-		std::string textureShaderVertexSrc = R"(
-			#version 330 core
-			layout(location = 0) in vec3 a_Position;
-			layout(location = 1) in vec2 a_TexCoord;
-			
-			uniform mat4 u_ViewProjection;
-			uniform mat4 u_Transform;
+		m_FlatColorShader = Enigma::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
-			out vec2 v_TexCoord;
-
-			void main(){
-				v_TexCoord = a_TexCoord;
-				gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
-			}
-		)";
-
-		std::string textureShaderFragmentSrc = R"(
-			#version 330 core
-
-			layout(location = 0) out vec4 color;
-
-			in vec2 v_TexCoord;
-
-			uniform sampler2D u_Texture;
-
-			void main(){
-				color = texture(u_Texture, v_TexCoord);
-			}
-		)";
-
-		m_TextureShader.reset(Enigma::Shader::Create(textureShaderVertexSrc, textureShaderFragmentSrc));
+		auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
 		m_Texture = Enigma::Texture2D::Create("assets/textures/test.png");
 
-		std::dynamic_pointer_cast<Enigma::OpenGLShader>(m_TextureShader)->Bind();
-		std::dynamic_pointer_cast<Enigma::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+		std::dynamic_pointer_cast<Enigma::OpenGLShader>(textureShader)->Bind();
+		std::dynamic_pointer_cast<Enigma::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 	}
 
 	void OnUpdate(Enigma::Timestep ts) override {
@@ -192,9 +162,10 @@ public:
 				Enigma::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 			}
 
-//		Enigma::Renderer::Submit(m_Shader, m_VertexArray);
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+
 		m_Texture->Bind();
-		Enigma::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Enigma::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
 
 		Enigma::Renderer::EndScene();
@@ -211,10 +182,11 @@ public:
 	}
 
 private:
+	Enigma::ShaderLibrary m_ShaderLibrary;
 	Enigma::Ref<Enigma::Shader> m_Shader;
 	Enigma::Ref<Enigma::VertexArray> m_VertexArray;
 
-	Enigma::Ref<Enigma::Shader> m_FlatColorShader, m_TextureShader;
+	Enigma::Ref<Enigma::Shader> m_FlatColorShader;
 	Enigma::Ref<Enigma::VertexArray> m_SquareVA;
 
 	Enigma::Ref<Enigma::Texture2D> m_Texture;

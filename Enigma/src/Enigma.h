@@ -3,6 +3,7 @@
 //include this header in Enigma applications to make Enigma available
 
 //--Basics--
+#include "Enigma/Core.h"
 #include "Enigma/Application.h"
 #include "Enigma/Layer.h"
 #include "Enigma/Log.h"
