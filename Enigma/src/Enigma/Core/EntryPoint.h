@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Enigma/Core.h"
+
 #ifdef ENGM_PLATFORM_WINDOWS
 
 extern Enigma::Application* Enigma::CreateApplication();

@@ -1,9 +1,9 @@
 #include "engmpch.h"
-#include "Application.h"
+#include "Enigma/Core/Application.h"
 
-#include "Enigma/Log.h"
-#include "Renderer/Renderer.h"
-#include "Input.h"
+#include "Enigma/Core/Log.h"
+#include "Enigma/Renderer/Renderer.h"
+#include "Enigma/Core/Input.h"
 #include <GLFW/glfw3.h>
 
 namespace Enigma {
@@ -16,7 +16,7 @@ namespace Enigma {
 		ENGM_CORE_ASSERT(!s_Instance, "Application already Exists!");
 		s_Instance = this;
 
-		m_Window = std::unique_ptr<Window>(Window::Create());
+		m_Window = Window::Create();
 		m_Window->SetEventCallback(ENGM_BIND_EVENT_FUNCTION(Application::OnEvent));
 
 		Renderer::Init();
@@ -24,6 +24,10 @@ namespace Enigma {
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
+	}
+
+	Application::~Application() {
+		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer) {

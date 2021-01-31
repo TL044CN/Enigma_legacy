@@ -1,17 +1,18 @@
 #include "engmpch.h"
-#include "Renderer2D.h"
+#include "Enigma/Renderer/Renderer2D.h"
 
-#include "VertexArray.h"
-#include "Shader.h"
-#include "RenderCommand.h"
+#include "Enigma/Renderer/VertexArray.h"
+#include "Enigma/Renderer/Shader.h"
+#include "Enigma/Renderer/RenderCommand.h"
+
 #include <glm/gtc/matrix_transform.hpp>
 
 namespace Enigma {
 
 	struct Renderer2DStorage {
 		Ref<VertexArray> QuadVertexArray;
-		Ref<Shader> FlatColorShader;
 		Ref<Shader> TextureShader;
+		Ref<Texture2D> WhiteTexture;
 	};
 
 	static Renderer2DStorage* s_Data;
@@ -31,8 +32,7 @@ namespace Enigma {
 		};
 
 		//Creating a Vertex Buffer for the Vertex Array and setting up its Mamorylayout
-		Ref<VertexBuffer> squareVertexBuffer;
-		squareVertexBuffer.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+		Ref<VertexBuffer> squareVertexBuffer = VertexBuffer::Create(squareVertices, sizeof(squareVertices));
 		squareVertexBuffer->SetLayout({
 			{ShaderDataType::Float3, "a_Position"},
 			{ShaderDataType::Float2, "a_TexCoord"}
@@ -43,14 +43,17 @@ namespace Enigma {
 
 		//	set up Index Buffer for the Quad
 		uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-		Enigma::Ref<Enigma::IndexBuffer> squareIndexBuffer;
-		squareIndexBuffer.reset(Enigma::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+		Enigma::Ref<Enigma::IndexBuffer> squareIndexBuffer = Enigma::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t));
 
 		//	set the Index Buffer for the Vertex Array
 		s_Data->QuadVertexArray->SetIndexBuffer(squareIndexBuffer);
 
 		//	create the Shaders for the Quad
-		s_Data->FlatColorShader = Shader::Create("assets/shaders/FlatColor.glsl");
+		//    Create White Texture
+		s_Data->WhiteTexture = Texture2D::Create(1, 1);
+		uint32_t whiteTextureData = 0xffffffff;
+		s_Data->WhiteTexture->SetData(&whiteTextureData, sizeof(uint32_t));
+		//    Create Texture from File
 		s_Data->TextureShader = Shader::Create("assets/shaders/Texture.glsl");
 
 		//  Bind Texture Shader
@@ -63,12 +66,7 @@ namespace Enigma {
 		delete s_Data;
 	}
 
-	void Renderer2D::BeginScene(const OrthographicCamera& camera) {
-		//Binding FlatColorShader
-		s_Data->FlatColorShader->Bind();
-		//Setting the View Projection Matrix of the FlatColorShader
-		s_Data->FlatColorShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
-		
+	void Renderer2D::BeginScene(const OrthographicCamera& camera) {		
 		//Binding Texture Shader
 		s_Data->TextureShader->Bind();
 		//Setting View Projection Matrix of the Texture Shader
@@ -83,14 +81,14 @@ namespace Enigma {
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) {
-		//Bind Flat Color Shader to the Quad
-		s_Data->FlatColorShader->Bind();
 		//upload Color of the Quad to the Shader
-		s_Data->FlatColorShader->SetFloat4("u_Color", color);
+		s_Data->TextureShader->SetFloat4("u_Color", color);
+		//Bind WhiteTexture to Shader
+		s_Data->WhiteTexture->Bind();
 
 		//apply Transform to the Quad (position and scale)
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		s_Data->FlatColorShader->SetMat4("u_Transform", transform);
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
 
 		//Bind Vertex Array to the Shader to define a quad then draw the Quad
 		s_Data->QuadVertexArray->Bind();
@@ -103,15 +101,16 @@ namespace Enigma {
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture) {
-		//Bind Texture Shader to the Quad
+		//Bind Shader to the Quad and Texture to Shader
+		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 		s_Data->TextureShader->Bind();
+		texture->Bind();
 		
 		//apply Transform to the Quad (position and size)
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) * glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
 		s_Data->TextureShader->SetMat4("u_Transform", transform);
 
-		//Bind texture and Vertex Array to the shader to define the Quad draw
-		texture->Bind();
+		//Bind Vertex Array to the shader to define the Quad draw
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}

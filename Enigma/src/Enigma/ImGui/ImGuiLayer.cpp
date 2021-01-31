@@ -1,11 +1,11 @@
 #include "engmpch.h"
-#include "ImGuiLayer.h"
+#include "Enigma/ImGui/ImGuiLayer.h"
 
-#include "imgui.h"
-#include "examples/imgui_impl_glfw.h"
-#include "examples/imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <examples/imgui_impl_glfw.h>
+#include <examples/imgui_impl_opengl3.h>
 
-#include "Enigma/Application.h"
+#include "Enigma/Core/Application.h"
 
 //temporary for keybindings
 #include <GLFW/glfw3.h>
@@ -74,10 +74,5 @@ namespace Enigma {
 			glfwMakeContextCurrent(backup_current_context);
 		}
 	}
-
-	void ImGuiLayer::OnImGuiRender() {
-/*		static bool show = true;
-		ImGui::ShowDemoWindow(&show);
-*/	}
 
 }

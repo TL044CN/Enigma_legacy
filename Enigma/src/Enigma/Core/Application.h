@@ -1,7 +1,7 @@
 #pragma once
-#include "Core.h"
-#include "Window.h"
-#include "Enigma/Layerstack.h"
+#include "Enigma/Core.h"
+#include "Enigma/Core/Window.h"
+#include "Enigma/Core/Layerstack.h"
 #include "Enigma/Events/Event.h"
 #include "Enigma/Events/ApplicationEvent.h"
 #include "Enigma/Core/Timestep.h"
@@ -12,7 +12,7 @@ namespace Enigma {
 	class Application {
 	public:
 		Application();
-		virtual ~Application() = default;
+		virtual ~Application();
 
 		void Run();
 

@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Enigma/Core.h"
-#include "Layer.h"
+#include "Enigma/Core/Layer.h"
 
 namespace Enigma {
 
 	class LayerStack {
 	public:
-		LayerStack();
+		LayerStack() = default;
 		~LayerStack();
 
 		void PushLayer(Layer* layer);

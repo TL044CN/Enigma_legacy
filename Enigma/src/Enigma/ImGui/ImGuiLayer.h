@@ -1,5 +1,5 @@
 #pragma once
-#include "Enigma/Layer.h"
+#include "Enigma/Core/Layer.h"
 
 #include "Enigma/Events/KeyEvent.h"
 #include "Enigma/Events/MouseEvent.h"
@@ -14,7 +14,6 @@ namespace Enigma {
 
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
-		virtual void OnImGuiRender() override;
 		
 		void Begin();
 		void End();

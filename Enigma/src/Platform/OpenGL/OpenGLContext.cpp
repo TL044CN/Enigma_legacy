@@ -1,7 +1,7 @@
 #include "engmpch.h"
-#include "OpenGLContext.h"
+#include "Platform/OpenGL/OpenGLContext.h"
 
-#include "Enigma/Log.h"
+#include "Enigma/Core/Log.h"
 
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>

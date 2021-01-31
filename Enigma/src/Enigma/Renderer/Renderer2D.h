@@ -1,7 +1,7 @@
 #pragma once
 
-#include "OrthographicCamera.h"
-#include "Texture.h"
+#include "Enigma/Renderer/OrthographicCamera.h"
+#include "Enigma/Renderer/Texture.h"
 
 namespace Enigma {
 

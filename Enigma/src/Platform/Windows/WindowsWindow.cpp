@@ -1,5 +1,5 @@
 #include "engmpch.h"
-#include "WindowsWindow.h"
+#include "Platform/Windows/WindowsWindow.h"
 
 #include "Enigma/Events/ApplicationEvent.h"
 #include "Enigma/Events/KeyEvent.h"
@@ -9,14 +9,14 @@
 
 namespace Enigma {
 
-	static bool s_GLFWInitialized = false;
+	static uint8_t s_GLFWWindowCount = 0;
 
 	static void GLFWErrorCallback(int error, const char* description) {
 		ENGM_CORE_ERROR("GLFW Error: [{0}]: {1}", error, description);
 	}
 
-	Window* Window::Create(const WindowProperties& props) {
-		return new WindowsWindow(props);
+	Scope<Window> Window::Create(const WindowProperties& props) {
+		return CreateScope<WindowsWindow>(props);
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProperties& props) {
@@ -34,16 +34,16 @@ namespace Enigma {
 
 		ENGM_CORE_INFO("Attempt at creating Window \"{0}\" ({1}x{2})",m_Data.Title, m_Data.Width,m_Data.Height);
 
-		if (!s_GLFWInitialized) {
+		if (s_GLFWWindowCount == 0) {
 			int success = glfwInit();
 			ENGM_CORE_ASSERT(success,"could not initialize GLFW!");
 			glfwSetErrorCallback(GLFWErrorCallback);
-			s_GLFWInitialized = true;
 		}
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+		++s_GLFWWindowCount;
 
-		m_Context = new OpenGLContext(m_Window);
+		m_Context = GraphicsContext::Create(m_Window);
 		m_Context->Init();
 
 		glfwSetWindowUserPointer(m_Window, &m_Data);
@@ -141,6 +141,11 @@ namespace Enigma {
 
 	void WindowsWindow::Shutdown() {
 		glfwDestroyWindow(m_Window);
+		--s_GLFWWindowCount;
+
+		if (s_GLFWWindowCount == 0) {
+			glfwTerminate();
+		}
 	}
 
 	void WindowsWindow::OnUpdate() {

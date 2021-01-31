@@ -35,7 +35,7 @@ namespace Enigma {
 
 		virtual void* GetNativeWindow() const = 0;
 
-		static Window* Create(const WindowProperties& props = WindowProperties());
+		static Scope<Window> Create(const WindowProperties& props = WindowProperties());
 	};
 
 }

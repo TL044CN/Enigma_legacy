@@ -1,6 +1,7 @@
 #include "engmpch.h"
-#include "OpenGLShader.h"
-#include "Enigma/Log.h"
+#include "Platform/OpenGL/OpenGLShader.h"
+#include "Enigma/Core/Log.h"
+
 #include <fstream>
 #include <glad/glad.h>
 #include <glm/gtc/type_ptr.hpp>
@@ -45,14 +46,21 @@ namespace Enigma {
 		if (input) {
 			//seek eof
 			input.seekg(0, std::ios::end);
-			//resize result size to actual size of the shader source
-			result.resize(input.tellg());
-			//jump back to the beginning of the file then read it
-			input.seekg(0, std::ios::beg);
-			input.read(&result[0], result.size());
-			input.close();
+
+			//get size of file
+			size_t size = input.tellg();
+			if (size != -1) {
+				//resize result size to actual size of the shader source
+				result.resize(size);
+				//jump back to the beginning of the file then read it
+				input.seekg(0, std::ios::beg);
+				input.read(&result[0], size);
+				input.close();
+			} else {
+				ENGM_ERROR("Could not read from file '{0}'", path);
+			}
 		} else {
-			ENGM_CORE_ERROR("Could not open file {0}", path);
+			ENGM_CORE_ERROR("Could not open file '{0}'", path);
 		}
 		return result;
 	}

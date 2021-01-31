@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Enigma/Input.h"
+#include "Enigma/Core/Input.h"
 
 namespace Enigma {
 

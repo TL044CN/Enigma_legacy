@@ -1,7 +1,7 @@
 #include "engmpch.h"
-#include "OrthographicCameraController.h"
+#include "Enigma/Renderer/OrthographicCameraController.h"
 
-#include "Enigma/Input.h"
+#include "Enigma/Core/Input.h"
 #include "Enigma/Core/Keycodes.h"
 
 namespace Enigma {

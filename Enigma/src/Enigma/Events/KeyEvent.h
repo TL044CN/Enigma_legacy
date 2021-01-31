@@ -1,5 +1,5 @@
 #pragma once
-#include "Event.h"
+#include "Enigma/Events/Event.h"
 
 #if defined(ENGM_DEBUG) || defined(ENGM_RELEASE)
 #include <sstream>

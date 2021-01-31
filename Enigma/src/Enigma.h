@@ -4,9 +4,9 @@
 
 //--Basics--
 #include "Enigma/Core.h"
-#include "Enigma/Application.h"
-#include "Enigma/Layer.h"
-#include "Enigma/Log.h"
+#include "Enigma/Core/Application.h"
+#include "Enigma/Core/Layer.h"
+#include "Enigma/Core/Log.h"
 #include "Enigma/Core/Timestep.h"
 #include "Enigma/ImGui/ImGuiLayer.h"
 
@@ -21,7 +21,7 @@
 #include "Enigma/Renderer/OrthographicCamera.h"
 
 //--Input--
-#include "Enigma/Input.h"
+#include "Enigma/Core/Input.h"
 #include "Enigma/Core/Keycodes.h"
 #include "Enigma/Core/Mousecodes.h"
-#include "Enigma/OrthographicCameraController.h"
+#include "Enigma/Renderer/OrthographicCameraController.h"

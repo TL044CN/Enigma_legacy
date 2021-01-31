@@ -1,7 +1,6 @@
 #include <Enigma.h>
-#include <Enigma/EntryPoint.h>
-#include "Platform/OpenGL/OpenGLShader.h"
-#include "imgui/imgui.h"
+#include <Enigma/Core/EntryPoint.h>
+#include <imgui/imgui.h>
 #include "glm/gtc/matrix_transform.hpp"
 #include <glm/gtc/type_ptr.hpp>
 #include "Sandbox2D.h"

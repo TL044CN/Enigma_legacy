@@ -1,12 +1,12 @@
 #include "engmpch.h"
-#include "WindowsInput.h"
+#include "Platform/Windows/WindowsInput.h"
 
-#include "Enigma/Application.h"
+#include "Enigma/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Enigma {
 
-	Input* Input::s_Instance = new WindowsInput();
+	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
 
 	bool WindowsInput::IsKeyPressedImpl(KeyCode keycode) {
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
