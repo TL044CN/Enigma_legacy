@@ -93,6 +93,8 @@ namespace Enigma {
 
 		//upload Color of the Quad to the Shader
 		s_Data->TextureShader->SetFloat4("u_Color", color);
+		//upload Tiling Factor
+		s_Data->TextureShader->SetFloat("u_FilingFactor", 1.0f);
 		//Bind WhiteTexture to Shader
 		s_Data->WhiteTexture->Bind();
 
@@ -105,16 +107,19 @@ namespace Enigma {
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture){
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor){
 		//convert vec2 to vec3 and call the other DrawQuad function
-		DrawQuad({ position.x, position.y, 0.0f }, size, texture);
+		DrawQuad({ position.x, position.y, 0.0f }, size, texture, tilingFactor, tintColor);
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture) {
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor) {
 		ENGM_PROFILE_FUNCTION();
 
+		//Set Tintcolor and Tiling Factor
+		s_Data->TextureShader->SetFloat4("u_Color", tintColor);
+		s_Data->TextureShader->SetFloat("u_TilingFactor", tilingFactor);
+
 		//Bind Shader to the Quad and Texture to Shader
-		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 		s_Data->TextureShader->Bind();
 		texture->Bind();
 		
@@ -126,4 +131,57 @@ namespace Enigma {
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
+
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const glm::vec4& color) {
+		DrawRotatedQuad({ position.x, position.y, 0.0f }, size, rotation, color);
+	}
+
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const glm::vec4& color) {
+		ENGM_PROFILE_FUNCTION();
+
+		//set Color of Quad and set the Tiling Factor to 1
+		s_Data->TextureShader->SetFloat4("u_Color", color);
+		s_Data->TextureShader->SetFloat("u_TilingFactor", 1.0f);
+
+		//Bind WhiteTexture
+		s_Data->WhiteTexture->Bind();
+
+		//set Transform
+		glm::mat4 transform =	glm::translate(glm::mat4(1.0f), position) *
+								glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) *
+								glm::scale(glm::mat4(1.0f), { size.x, size.y, 10.f });
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
+
+		//Bind VertexArray
+		s_Data->QuadVertexArray->Bind();
+
+		//Draw Quad
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
+	}
+
+	void Renderer2D::DrawRotatedQuad(const glm::vec2& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor) {
+		DrawRotatedQuad({ position.x, position.y, 0.0f }, size, rotation, texture, tilingFactor, tintColor);
+	}
+
+	void Renderer2D::DrawRotatedQuad(const glm::vec3& position, const glm::vec2& size, float rotation, const Ref<Texture2D>& texture, float tilingFactor, const glm::vec4& tintColor) {
+		ENGM_PROFILE_FUNCTION();
+
+		//set Color of Quad and set the Tiling Factor to 1, then Bind Texture
+		s_Data->TextureShader->SetFloat4("u_Color", tintColor);
+		s_Data->TextureShader->SetFloat("u_TilingFactor", tilingFactor);
+		texture->Bind();
+		
+		//set Transform
+		glm::mat4 transform =	glm::translate(glm::mat4(1.0f), position) *
+								glm::rotate(glm::mat4(1.0f), rotation, { 0.0f, 0.0f, 1.0f }) *
+								glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
+
+		//Bind Vertex Array
+		s_Data->QuadVertexArray->Bind();
+
+		//Draw Quad
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
+	}
+
 }

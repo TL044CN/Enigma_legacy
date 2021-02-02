@@ -106,7 +106,7 @@ namespace Enigma {
 	};
 }
 
-#define ENGM_PROFILE 1
+#define ENGM_PROFILE 0
 #if ENGM_PROFILE
 	#define ENGM_PROFILE_BEGIN_SESSION(name, path) ::Enigma::Profiler::Get().BeginSession(name, path)
 	#define ENGM_PROFILE_END_SESSION() ::Enigma::Profiler::Get().EndSession()

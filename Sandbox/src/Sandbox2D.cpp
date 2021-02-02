@@ -36,7 +36,7 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 		Enigma::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 		Enigma::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
-		Enigma::Renderer2D::DrawQuad({ 0.5f, 0.5f, 0.1f }, { 1.0f, 1.0f }, m_MissingTexture);
+		Enigma::Renderer2D::DrawRotatedQuad({ 0.5f, 0.5f, 0.1f }, { 1.0f, 1.0f }, glm::radians(-45.0f) ,m_MissingTexture, 5.0f);
 
 		//	Flush scene
 		Enigma::Renderer2D::EndScene();
