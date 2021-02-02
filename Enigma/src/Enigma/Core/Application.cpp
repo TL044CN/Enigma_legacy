@@ -12,6 +12,7 @@ namespace Enigma {
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
+		ENGM_PROFILE_FUNCTION();
 
 		ENGM_CORE_ASSERT(!s_Instance, "Application already Exists!");
 		s_Instance = this;
@@ -27,47 +28,66 @@ namespace Enigma {
 	}
 
 	Application::~Application() {
+		ENGM_PROFILE_FUNCTION();
+
 		Renderer::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer) {
+		ENGM_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
+		layer->OnAttach();
 	}
 
 		
 	void Application::PushOverlay(Layer* overlay) {
+		ENGM_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(overlay);
+		overlay->OnAttach();
 	}
 
 	void Application::OnEvent(Event& e) {
+		ENGM_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch<WindowCloseEvent>(ENGM_BIND_EVENT_FUNCTION(Application::OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(ENGM_BIND_EVENT_FUNCTION(Application::OnWindowResize));
 
-		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); ) {
-			(*--it)->OnEvent(e);
+		for (auto it = m_LayerStack.rbegin(); it != m_LayerStack.rend(); ++it) {
+			(*it)->OnEvent(e);
 			if (e.Handled)
 				break;
 		}
 	}
 
 	void Application::Run() {
+		ENGM_PROFILE_FUNCTION();
+
 		while (m_Running) {
 			float time = (float)glfwGetTime();
 			Timestep timestep = time - m_LastFrameTime;
 			m_LastFrameTime = time;
 
-			if(!m_Minimized)
-				for (Layer* layer : m_LayerStack)
-					layer->OnUpdate(timestep);
+			if (!m_Minimized) {
+				{
+					ENGM_PROFILE_SCOPE("LayerStack::OnUpdate");
 
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-				layer->OnImGuiRender();
-			m_ImGuiLayer->End();
+					for (Layer* layer : m_LayerStack)
+						layer->OnUpdate(timestep);
+				}
+				m_ImGuiLayer->Begin();
+				{
+					ENGM_PROFILE_SCOPE("LayerStack::OnImGuiRender");
 
-			m_Window->OnUpdate();
+					for (Layer* layer : m_LayerStack)
+						layer->OnImGuiRender();
+					m_ImGuiLayer->End();
+				}
+				m_Window->OnUpdate();
+			}
 		}
 	}
 
@@ -77,6 +97,8 @@ namespace Enigma {
 	}
 
 	bool Application::OnWindowResize(WindowResizeEvent& e) {
+		ENGM_PROFILE_FUNCTION();
+	
 		if (e.GetWidth() == 0 || e.GetHeight() == 0) {
 			m_Minimized = true;
 			return false;

@@ -329,6 +329,7 @@
       <Filter>src\Enigma</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\OrthographicCameraController.h" />
+    <ClInclude Include="src\Enigma\Debug\Profiler.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Enigma\ImGui\ImGuiBuild.cpp">

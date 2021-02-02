@@ -15,6 +15,8 @@ namespace Enigma {
 	}
 
 	void OpenGLContext::Init() {
+		ENGM_PROFILE_FUNCTION();
+
 		glfwMakeContextCurrent(m_windowHandle);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
 		ENGM_CORE_ASSERT(status, "Failed to initialize Glad!");
@@ -26,6 +28,8 @@ namespace Enigma {
 	}
 
 	void OpenGLContext::SwapBuffers() {
+		ENGM_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_windowHandle);
 	}
 

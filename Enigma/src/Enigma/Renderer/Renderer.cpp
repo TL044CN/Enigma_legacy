@@ -8,6 +8,8 @@ namespace Enigma {
 	Renderer::SceneData* Renderer::m_SceneData = new Renderer::SceneData;
 
 	void Renderer::Init() {
+		ENGM_PROFILE_FUNCTION();
+
 		RenderCommand::Init();
 		Renderer2D::Init();
 	}

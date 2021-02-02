@@ -18,6 +18,8 @@ namespace Enigma {
 	static Renderer2DStorage* s_Data;
 
 	void Renderer2D::Init() {
+		ENGM_PROFILE_FUNCTION();
+
 		//Creating a Storage and Vertex Array
 		s_Data = new Renderer2DStorage();
 		s_Data->QuadVertexArray = VertexArray::Create();
@@ -63,17 +65,23 @@ namespace Enigma {
 	}
 
 	void Renderer2D::Shutdown() {
+		ENGM_PROFILE_FUNCTION();
+
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera) {		
+		ENGM_PROFILE_FUNCTION();
+
 		//Binding Texture Shader
 		s_Data->TextureShader->Bind();
 		//Setting View Projection Matrix of the Texture Shader
 		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
-	void Renderer2D::EndScene(){}
+	void Renderer2D::EndScene() {
+		ENGM_PROFILE_FUNCTION();
+	}
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color){
 		//convert vec2 to vec3 and call the other DrawQuad function
@@ -81,6 +89,8 @@ namespace Enigma {
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color) {
+		ENGM_PROFILE_FUNCTION();
+
 		//upload Color of the Quad to the Shader
 		s_Data->TextureShader->SetFloat4("u_Color", color);
 		//Bind WhiteTexture to Shader
@@ -101,6 +111,8 @@ namespace Enigma {
 	}
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const Ref<Texture2D>& texture) {
+		ENGM_PROFILE_FUNCTION();
+
 		//Bind Shader to the Quad and Texture to Shader
 		s_Data->TextureShader->SetFloat4("u_Color", glm::vec4(1.0f));
 		s_Data->TextureShader->Bind();

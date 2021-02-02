@@ -7,9 +7,11 @@
 namespace Enigma {
 
 	OrthographicCameraController::OrthographicCameraController(float aspectRatio, bool rotation)
-	:m_AspectRatio(aspectRatio), m_Camera(-m_AspectRatio*m_ZoomLevel, m_AspectRatio* m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation) { }
+	: m_AspectRatio(aspectRatio), m_Camera(-m_AspectRatio*m_ZoomLevel, m_AspectRatio* m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel), m_Rotation(rotation) { }
 
 	void OrthographicCameraController::OnUpdate(Timestep t) {
+		ENGM_PROFILE_FUNCTION();
+
 		if (Input::IsKeyPressed(ENGM_KEY_A))
 			m_CameraPosition.x -= m_CameraTranslationSpeed * t;
 		else if (Input::IsKeyPressed(ENGM_KEY_D))
@@ -35,12 +37,17 @@ namespace Enigma {
 	}
 
 	void OrthographicCameraController::OnEvent(Event& e) {
+		ENGM_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
+
 		dispatcher.Dispatch<MouseScrolledEvent>(ENGM_BIND_EVENT_FUNCTION(OrthographicCameraController::OnMouseScrolled));
 		dispatcher.Dispatch<WindowResizeEvent>(ENGM_BIND_EVENT_FUNCTION(OrthographicCameraController::OnWindowResized));
 	}
 
 	bool OrthographicCameraController::OnMouseScrolled(MouseScrolledEvent& e) {
+		ENGM_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= e.GetYOffset() * .25f;
 		m_ZoomLevel = std::max(m_ZoomLevel, .25f);
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
@@ -48,6 +55,8 @@ namespace Enigma {
 	}
 
 	bool OrthographicCameraController::OnWindowResized(WindowResizeEvent& e) {
+		ENGM_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 		return false;
