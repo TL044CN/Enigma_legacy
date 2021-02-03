@@ -7,6 +7,15 @@
 
 namespace Enigma {
 
+	Ref<VertexBuffer> Enigma::VertexBuffer::Create(uint32_t size) {
+		switch (Renderer::GetAPI()) {
+		case RendererAPI::API::None:	ENGM_CORE_FATAL("{0}", "RendererAPI::None is not a valid renderer API!"); return nullptr;
+		case RendererAPI::API::OpenGL:	return CreateRef<OpenGLVertexBuffer>(size);
+		}
+		ENGM_CORE_FATAL("{0}", "Unknown Renderer API!");
+		return nullptr;
+	}
+
 	Ref<VertexBuffer> Enigma::VertexBuffer::Create(float* vertices, uint32_t size) {
 		switch (Renderer::GetAPI()) {
 			case RendererAPI::API::None:	ENGM_CORE_FATAL("{0}", "RendererAPI::None is not a valid renderer API!"); return nullptr;

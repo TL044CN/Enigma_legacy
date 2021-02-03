@@ -23,6 +23,7 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 	//Update Camera Controler
 	m_CameraController.OnUpdate(t);
 
+	Enigma::Renderer2D::ResetStats();
 	{
 		ENGM_PROFILE_SCOPE("Renderer Preparation");
 		//Render Scene
@@ -36,9 +37,19 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 		Enigma::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 		Enigma::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 1.0f, 1.0f }, m_SquareColor);
-		Enigma::Renderer2D::DrawRotatedQuad({ 0.5f, 0.5f, 0.1f }, { 1.0f, 1.0f }, glm::radians(-45.0f) ,m_MissingTexture, 5.0f);
+		Enigma::Renderer2D::DrawRotatedQuad({ 0.5f, 0.5f, 0.1f }, { 1.0f, 1.0f }, 45.0f, m_MissingTexture, 5.0f);
 
 		//	Flush scene
+		Enigma::Renderer2D::EndScene();
+
+		//Test Batchrenderer
+		Enigma::Renderer2D::BeginScene(m_CameraController.GetCamera());
+
+		for(float y = -5.0f; y<5.0f; y+=0.5f)
+			for (float x = -5.0f; x < 5.0f; x += 0.5f) {
+				glm::vec4 color = { 0.0f, ((float)((float)rand() / (float)RAND_MAX) * 0.2f) + 0.6f, 0.2f, 0.9f };
+				Enigma::Renderer2D::DrawQuad({ x,y }, { 0.45f,0.45f }, color);
+			}
 		Enigma::Renderer2D::EndScene();
 	}
 }
@@ -46,6 +57,16 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 void Sandbox2D::OnImGuiRender() {
 	//Set ImGui Window Title
 	ImGui::Begin("Settings");
+
+	//get the Renderer Stats
+	auto stats = Enigma::Renderer2D::GetStats();
+	//display the Renderer Stats
+	ImGui::Text("Renderer2D Stats:");
+	ImGui::Text("DrawCalls: %d", stats.DrawCalls);
+	ImGui::Text("Quads: %d", stats.QuadCount);
+	ImGui::Text("Vertices: %d", stats.GetTotalVertexCount());
+	ImGui::Text("Indices: %d", stats.GetTotalIndexCount());
+
 	//add Controlls to change the Square Color
 	ImGui::ColorEdit4("SquareColor", glm::value_ptr(m_SquareColor));
 	//flush
