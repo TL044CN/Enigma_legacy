@@ -1,38 +1,49 @@
 #include "engmpch.h"
-#include "Platform/Windows/WindowsInput.h"
+#include "Enigma/Core/Input.h"
 
 #include "Enigma/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace Enigma {
 
-	Scope<Input> Input::s_Instance = CreateScope<WindowsInput>();
-
-	bool WindowsInput::IsKeyPressedImpl(KeyCode keycode) {
+	//Checks if the specified Keyboard Key is pressed
+	bool Input::IsKeyPressed(KeyCode key) {
+		//Get the current Window as a GLFWwindow to use with GLFW
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		auto state = glfwGetKey(window, (int)keycode);
+
+		//get the State of the Key then return the Check (if it was pressed or is held)
+		auto state = glfwGetKey(window, static_cast<int32_t>(key));
 		return state == GLFW_PRESS || state == GLFW_REPEAT;
 	}
 
-	 bool WindowsInput::IsMouseButtonPressedImpl(MouseCode button) {
-		 auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		 auto state = glfwGetMouseButton(window, (int)button);
-		 return state == GLFW_PRESS;
-	 }
+	//Checks if the specified Mouse Button is pressed
+	bool Input::IsMouseButtonPressed(MouseCode button) {
+		//Get the current Window as a GLFWwindow to use with GLFW
+		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
-	 std::pair<float, float> WindowsInput::GetMousePositionImpl() {
-		 auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
-		 double xpos, ypos;
-		 glfwGetCursorPos(window, &xpos, &ypos);
-		 return { (float)xpos, (float)ypos };
-	 }
+		//get the State of the Button then return the Check (if it was pressed)
+		auto state = glfwGetMouseButton(window, static_cast<int32_t>(button));
+		return state == GLFW_PRESS;
+	}
 
-	 float WindowsInput::GetMouseXImpl() {
-		 return GetMousePositionImpl().first;
-	 }
+	//returns the Current MousePosition. Not Implemented yet
+	std::pair<float, float> Input::GetMousePosition() {
+		//Get the current Window as a GLFWwindow to use with GLFW
+		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 
-	 float WindowsInput::GetMouseYImpl() {
-		 return GetMousePositionImpl().second;
-	 }
+		double xpos, ypos;
+		return { (float)xpos,(float)ypos };
+	}
 
+	//Not Implemented Yet
+	float Input::GetMouseX() {
+		auto [x, y] = GetMousePosition();
+		return x;
+	}
+
+	//Not Implemented Yet
+	float Input::GetMouseY() {
+		auto [x, y] = GetMousePosition();
+		return y;
+	}
 }

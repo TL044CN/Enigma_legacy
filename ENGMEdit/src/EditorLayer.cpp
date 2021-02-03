@@ -30,7 +30,8 @@ void EditorLayer::OnUpdate(Enigma::Timestep t) {
 	ENGM_PROFILE_FUNCTION();
 
 	//Update Camera Controler
-	m_CameraController.OnUpdate(t);
+	if(m_ViewportFocused)
+		m_CameraController.OnUpdate(t);
 
 	//Render
 	Enigma::Renderer2D::ResetStats();
@@ -141,6 +142,12 @@ void EditorLayer::OnImGuiRender() {
 	//Viewport Display:
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0,0 });
 	ImGui::Begin("Viewpoort");
+
+	m_ViewportFocused = ImGui::IsWindowFocused();
+	m_ViewportHovered = ImGui::IsWindowHovered();
+
+	Enigma::Application::Get().GetImGuiLayer()->BlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+
 	ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 	if (m_ViewportSize != *((glm::vec2*) & viewportPanelSize)) {
 		m_Framebuffer->Resize((uint32_t)viewportPanelSize.x, (uint32_t)viewportPanelSize.y);
