@@ -16,6 +16,7 @@
 #include "Enigma/Renderer/RenderCommand.h"
 #include "Enigma/Renderer/Buffer.h"
 #include "Enigma/Renderer/Shader.h"
+#include "Enigma/Renderer/Framebuffer.h"
 #include "Enigma/Renderer/Texture.h"
 #include "Enigma/Renderer/VertexArray.h"
 #include "Enigma/Renderer/OrthographicCamera.h"

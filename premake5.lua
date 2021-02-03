@@ -1,6 +1,6 @@
 workspace "Enigma"
 	architecture "x86_64"
-	startproject "Sandbox"
+	startproject "ENGMEdit"
 	configurations{"Debug", "Release", "Dist"}
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -135,3 +135,49 @@ project "Sandbox"
 		runtime "Release"
 		optimize "on"
 
+project "ENGMEdit"
+	location "ENGMEdit"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "on"
+
+	targetdir ("bin/".. outputdir.."/%{prj.name}")
+	objdir ("bin-int/".. outputdir.."/%{prj.name}")
+
+	files {
+		"%{prj.name}/src/*.h",
+		"%{prj.name}/src/*.cpp"
+	}
+
+	includedirs {
+		"Enigma/vendor/spdlog/include",
+		"Enigma/src",
+		"Enigma/vendor",
+		"%{IncludeDir.glm}"
+	}
+
+	links{
+		"Enigma"
+	}
+
+	filter "system:windows"
+		systemversion "latest"
+		defines {
+			"ENGM_PLATFORM_WINDOWS"
+		}
+
+	filter"configurations:Debug"
+		defines "ENGM_DEBUG"
+		runtime "Debug"
+		symbols "on"
+
+	filter"configurations:Release"
+		defines "ENGM_RELEASE"
+		runtime "Release"
+		optimize "on"
+
+	filter"configurations:Dist"
+		defines "ENGM_DIST"
+		runtime "Release"
+		optimize "on"

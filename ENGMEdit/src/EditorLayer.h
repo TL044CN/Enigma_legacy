@@ -2,10 +2,10 @@
 
 #include "Enigma.h"
 
-class Sandbox2D : public Enigma::Layer {
+class EditorLayer : public Enigma::Layer {
 public:
-	Sandbox2D();
-	virtual ~Sandbox2D() = default;
+	EditorLayer();
+	virtual ~EditorLayer() = default;
 
 	virtual void OnAttach() override;
 	virtual void OnDetach() override;
@@ -18,8 +18,11 @@ private:
 
 	Enigma::Ref<Enigma::VertexArray> m_SquareVA;
 	Enigma::Ref<Enigma::Shader> m_FlatColorShader;
+	Enigma::Ref<Enigma::Framebuffer> m_Framebuffer;
 
 	Enigma::Ref<Enigma::Texture2D> m_MissingTexture;
+
+	glm::vec2 m_ViewportSize = { 0.0f,0.0f };
 
 	glm::vec4 m_SquareColor = { 0.8f, 0.5f, 0.3f, 1.0f };
 };

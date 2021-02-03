@@ -15,6 +15,8 @@ namespace Enigma {
 		void OnUpdate(Timestep t);
 		void OnEvent(Event& e);
 
+		void OnResize(float width, float height);
+
 		OrthographicCamera& GetCamera() { return m_Camera; }
 		const OrthographicCamera& GetCVamera() const { return m_Camera; }
 

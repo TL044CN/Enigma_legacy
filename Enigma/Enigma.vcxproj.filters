@@ -10,6 +10,9 @@
     <Filter Include="src\Enigma\Core">
       <UniqueIdentifier>{A5999B33-1125-09F8-1A36-8CEC864065F8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Enigma\Debug">
+      <UniqueIdentifier>{63291BA7-4F22-3AF9-7854-1F7E64AC1905}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Enigma\Events">
       <UniqueIdentifier>{71A80A8E-DDBE-0824-2636-9445928BD9AB}</UniqueIdentifier>
     </Filter>
@@ -66,7 +69,25 @@
     <ClInclude Include="src\Enigma\Core.h">
       <Filter>src\Enigma</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Application.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\EntryPoint.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Input.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Core\Keycodes.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Layer.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Layerstack.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Log.h">
       <Filter>src\Enigma\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Core\Mousecodes.h">
@@ -74,6 +95,12 @@
     </ClInclude>
     <ClInclude Include="src\Enigma\Core\Timestep.h">
       <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Core\Window.h">
+      <Filter>src\Enigma\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Debug\Profiler.h">
+      <Filter>src\Enigma\Debug</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Events\ApplicationEvent.h">
       <Filter>src\Enigma\Events</Filter>
@@ -93,16 +120,25 @@
     <ClInclude Include="src\Enigma\Renderer\Buffer.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Framebuffer.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\GraphicsContext.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\OrthographicCamera.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\OrthographicCameraController.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\RenderCommand.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\Renderer.h">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Enigma\Renderer\Renderer2D.h">
       <Filter>src\Enigma\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Enigma\Renderer\RendererAPI.h">
@@ -121,6 +157,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramebuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -306,32 +345,20 @@
     <ClInclude Include="vendor\stb_image\tests\prerelease\stb_lib.h">
       <Filter>vendor\stb_image\tests\prerelease</Filter>
     </ClInclude>
-    <ClInclude Include="src\Enigma\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Enigma\Core\Application.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Input.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Window.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\EntryPoint.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Layer.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Layerstack.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Core\Log.h">
-      <Filter>src\Enigma</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Enigma\Renderer\OrthographicCameraController.h" />
-    <ClInclude Include="src\Enigma\Debug\Profiler.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Enigma\Core\Application.cpp">
+      <Filter>src\Enigma\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Core\Layer.cpp">
+      <Filter>src\Enigma\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Core\Layerstack.cpp">
+      <Filter>src\Enigma\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Core\Log.cpp">
+      <Filter>src\Enigma\Core</Filter>
+    </ClCompile>
     <ClCompile Include="src\Enigma\ImGui\ImGuiBuild.cpp">
       <Filter>src\Enigma\ImGui</Filter>
     </ClCompile>
@@ -341,13 +368,25 @@
     <ClCompile Include="src\Enigma\Renderer\Buffer.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Framebuffer.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\GraphicsContext.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Enigma\Renderer\OrthographicCamera.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\OrthographicCameraController.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Renderer\RenderCommand.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Renderer\Renderer.cpp">
+      <Filter>src\Enigma\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Enigma\Renderer\Renderer2D.cpp">
       <Filter>src\Enigma\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Enigma\Renderer\RendererAPI.cpp">
@@ -366,6 +405,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramebuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -388,21 +430,6 @@
     </ClCompile>
     <ClCompile Include="src\engmpch.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enigma\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Enigma\Core\Application.cpp">
-      <Filter>src\Enigma</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enigma\Core\Layer.cpp">
-      <Filter>src\Enigma</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enigma\Core\Layerstack.cpp">
-      <Filter>src\Enigma</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Enigma\Renderer\GraphicsContext.cpp" />
-    <ClCompile Include="src\Enigma\Renderer\OrthographicCameraController.cpp" />
-    <ClCompile Include="src\Enigma\Core\Log.cpp">
-      <Filter>src\Enigma</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

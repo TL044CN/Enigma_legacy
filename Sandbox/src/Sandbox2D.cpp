@@ -26,6 +26,7 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 	Enigma::Renderer2D::ResetStats();
 	{
 		ENGM_PROFILE_SCOPE("Renderer Preparation");
+
 		//Render Scene
 		//	setup rendering environment
 		Enigma::RenderCommand::SetClearColor({ 0.1f, 0.1f, 0.1f,1.0f });
@@ -42,6 +43,8 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 		//	Flush scene
 		Enigma::Renderer2D::EndScene();
 
+		//Unbind Framebuffer
+
 		//Test Batchrenderer
 		Enigma::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
@@ -55,6 +58,8 @@ void Sandbox2D::OnUpdate(Enigma::Timestep t) {
 }
 
 void Sandbox2D::OnImGuiRender() {
+	ENGM_PROFILE_FUNCTION();
+
 	//Set ImGui Window Title
 	ImGui::Begin("Settings");
 
@@ -69,7 +74,8 @@ void Sandbox2D::OnImGuiRender() {
 
 	//add Controlls to change the Square Color
 	ImGui::ColorEdit4("SquareColor", glm::value_ptr(m_SquareColor));
-	//flush
+
+	//End that Part
 	ImGui::End();
 }
 
