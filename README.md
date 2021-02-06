@@ -2,7 +2,7 @@
 ## Enigma Engine
 ### A small Application Engine, capable of doing pretty much anything.
 
-More of a Pet Project for training how to use Libs correctly.
+#### More of a Pet Project for training how to use Libs correctly.
 
 ## Usage:
 The User does not have direct access to `void main()`, so Applications have to use the Entry Point of the Engine
