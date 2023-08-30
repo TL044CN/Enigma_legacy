@@ -25,12 +25,12 @@ namespace Enigma {
     }
 
     bool WindowsWindow::isVSync() const {
-        
+
     }
 
 
     void* WindowsWindow::getNativeWindow() const {
-
+        
     }
 
 }
